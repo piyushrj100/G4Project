@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:id="@+id/etotp"
+            android:id="@+id/etPwd"
             android:background="@color/colorPrimary"
             android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
             android:drawablePadding="16dp"
@@ -64,7 +64,7 @@
             android:layout_marginTop="20dp">
             <Button
                 android:layout_width="match_parent"
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnPwd"
                 android:layout_height="wrap_content"
                 android:text="get otp "
                 android:textColor="@android:color/white"
@@ -80,7 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="login"
-                android:id="@+id/btnOtp"
+                android:id="@+id/btnLogin"
                 android:textColor="@android:color/white"
                 android:background="@color/colorPrimary"
                 android:layout_marginLeft="20dp"
