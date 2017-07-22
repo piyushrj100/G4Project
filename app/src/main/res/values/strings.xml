@@ -6,11 +6,11 @@
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
     <string name="slide_1_title">Hello!</string>
-    <string name="slide_1_desc">Welcome to tcs family.We are happy to have you onboard</string>
+    <string name="slide_1_desc">Welcome to TCS family.We are happy to have you onboard</string>
     <string name="slide_2_title">Contact us hassle free. </string>
     <string name="slide_2_desc">Now no need to be nervous and worried about whom to meet and when</string>
     <string name="slide_3_title">Reach Anywhere!</string>
-    <string name="slide_3_desc">With this app reach any place any building in tcs</string>
+    <string name="slide_3_desc">With this app reach any place any building in TCS</string>
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
 </resources>

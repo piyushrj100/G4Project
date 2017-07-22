@@ -91,9 +91,10 @@
             android:orientation="horizontal"
             android:layout_marginTop="10dp">
             <Button
-                android:layout_width="87dp"
                 android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Login"
                 android:minHeight="40dp"
                 android:textAllCaps="false"
@@ -106,10 +107,11 @@
                 android:height="10dp" />
 
             <Button
-                android:layout_width="98dp"
-                android:layout_height="wrap_content"
-                android:text="New User?"
                 android:id="@+id/btnNewUsr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="New User?"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:background="@drawable/round"

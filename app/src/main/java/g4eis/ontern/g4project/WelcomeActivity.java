@@ -4,7 +4,8 @@ package g4eis.ontern.g4project;
 
 import android.content.Context;
         import android.content.Intent;
-        import android.graphics.Color;
+import android.content.SharedPreferences;
+import android.graphics.Color;
         import android.os.Build;
         import android.os.Bundle;
         import android.support.v4.view.PagerAdapter;
@@ -28,15 +29,17 @@ public class WelcomeActivity extends AppCompatActivity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
-    private PreferenceManager prefManager;
+    SharedPreferences sharedpreferences;
+    public static final String MyPREFERENCES = "MyPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Checking for first time launch - before calling setContentView()
-        prefManager = new PreferenceManager(this);
-        if (!prefManager.isFirstTimeLaunch()) {
+        // Checking for user logged in or not - before calling setContentView()
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        Boolean data=sharedpreferences.getBoolean("login",false);
+        if (data==true) {
             launchHomeScreen();
             finish();
         }
@@ -116,8 +119,9 @@ public class WelcomeActivity extends AppCompatActivity {
         return viewPager.getCurrentItem() + i;
     }
 
+
+    //redirecting to Dashboard if user is already logged in
     private void launchHomeScreen() {
-        prefManager.setFirstTimeLaunch(false);
         startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
         finish();
     }
