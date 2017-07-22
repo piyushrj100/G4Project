@@ -37,9 +37,7 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-
-            >
+            android:layout_marginTop="20dp">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,9 +62,6 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textColorHint="#ffffff"
-
-
             android:layout_marginTop="20dp"
             android:id="@+id/visible">
             <EditText
@@ -86,7 +81,7 @@
                 android:padding="10dp"
                 android:inputType="textPassword"
                 android:textColor="@color/colorAccent"
-                android:textColorHint="@android:color/white" />
+                android:textColorHint="#ffffffff" />
         </android.support.design.widget.TextInputLayout>
 
 
@@ -96,8 +91,8 @@
             android:orientation="horizontal"
             android:layout_marginTop="10dp">
             <Button
-                android:layout_width="62dp"
-                android:id="@+id/btnPwd"
+                android:layout_width="87dp"
+                android:id="@+id/btnLogin"
                 android:layout_height="wrap_content"
                 android:text="Login"
                 android:minHeight="40dp"
@@ -105,26 +100,24 @@
                 android:textColor="@android:color/white"
                 android:background="@drawable/round"
                 android:layout_marginLeft="20dp"
-
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginRight="20dp"
-                android:height="10dp"
-                />
+                android:height="10dp" />
+
             <Button
-                android:layout_width="113dp"
+                android:layout_width="98dp"
                 android:layout_height="wrap_content"
-                android:text="Get Password"
-                android:id="@+id/btnLogin"
+                android:text="New User?"
+                android:id="@+id/btnNewUsr"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:background="@drawable/round"
-
                 android:minHeight="40dp"
-
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginRight="20dp" />
+
         </LinearLayout>
             <Button
                 android:id="@+id/btnForgot"
