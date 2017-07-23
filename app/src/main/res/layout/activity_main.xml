@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:src="@mipmap/tcs"
+            android:elevation="4dp"
             android:layout_marginBottom="10dp"
             android:layout_gravity="center" />
         <LinearLayout
@@ -125,7 +126,7 @@
                 android:id="@+id/btnForgot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#fff"
+                android:background="@null"
                 android:textAllCaps="false"
                 android:text="Forgot Password?"
                 android:layout_gravity="center"
