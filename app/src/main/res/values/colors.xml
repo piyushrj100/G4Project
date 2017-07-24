@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#1565c0</color>
     <color name="colorAccent">#f44336</color>
     <!--Following code written by piyush Raja-->
+    <color name="viewBg">#f1f5f8</color>
     <!-- Screens background color-->
     <color name="bg_slider_screen1">#203d8c</color>
     <color name="bg_slider_screen2">#203d8c</color>

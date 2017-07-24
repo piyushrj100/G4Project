@@ -20,7 +20,7 @@
         </activity>
         <activity android:name=".Splashscreen" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Dashboard"></activity>
+        <activity android:name=".Dashboard" />
     </application>
 
 </manifest>
