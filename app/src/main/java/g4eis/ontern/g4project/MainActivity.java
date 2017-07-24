@@ -148,29 +148,36 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jobj = new JSONObject(response);
+                            if(jobj.length()==0)
+                            {
+                                Snackbar.make(findViewById(R.id.mainLayout), "Empty JSON...", Snackbar.LENGTH_LONG).show();
+                                return;
+                            }
                             String rslt=jobj.getString("access_token").toString();
                             String token=jobj.getString("token_type").toString();
                             SharedPreferences.Editor editor = sharedpreferences.edit();
-                            if(token.equals("Bearer")&&!rslt.equals(""))
+                            if(!rslt.equals(null)&&token.equals("Bearer"))
                             {
                                 editor.putString("uid",email);
                                 editor.putString("pwd",password);
                                 editor.putString("token",rslt);
                                 editor.putBoolean("login",true);
                                 editor.commit();
-                                Toast.makeText(MainActivity.this,"Login successful...",Toast.LENGTH_LONG).show();
+                                Toast.makeText(MainActivity.this, "Login Successful...", Toast.LENGTH_SHORT).show();
+                                //Snackbar.make(findViewById(R.id.dashLayout), "Login Successful...", Snackbar.LENGTH_LONG).show();
                                 Intent chatIntent=new Intent(MainActivity.this,Dashboard.class);
                                 //chatIntent.putExtra("userid",email);
                                 startActivity(chatIntent);
                                 finish();
                             }
-                            else{
-                                editor.putBoolean("login",false);
-                                editor.commit();
-                                Toast.makeText(MainActivity.this,"Wrong Credentials entered!! Try Again...",Toast.LENGTH_LONG).show();
+                            else {
+                                Snackbar.make(findViewById(R.id.mainLayout), "Wrong Credentials entered!! Try Again...", Snackbar.LENGTH_LONG).show();
                             }
                         }catch (Exception e){
                             System.out.println(e.getMessage().toString());
+                            //Toast.makeText(MainActivity.this,e.getMessage().toString(),Toast.LENGTH_LONG);
+                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+
                         }
                     }
                 },
@@ -178,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Snackbar.make(findViewById(R.id.mainLayout), "Wrong Credentials entered or Server too Busy!! Try Again Later...", Snackbar.LENGTH_LONG).show();
 
                     }
                 }
@@ -204,15 +212,19 @@ public class MainActivity extends AppCompatActivity {
         String url = "http://tcsapp.quicfind.com/users/new";
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>()
-                {   @Override
+                {
+                    @Override
                     public void onResponse(String response) {
                         try
-                        {   JSONObject jobj = new JSONObject(response);  //Response string to JSON
+                        {
+                            JSONObject jobj = new JSONObject(response);  //Response string to JSON
                             String rslt=jobj.getString("data").toString(); //extract response value from JSON
                             if(!rslt.equals(""))
-                            {   Snackbar.make(findViewById(R.id.mainLayout), "Registration successful!!!Please login with password \"abcd1234\"", Snackbar.LENGTH_INDEFINITE).show();
+                            {
+                                Snackbar.make(findViewById(R.id.mainLayout), "Registration successful!!!Please login with password \"abcd1234\"", Snackbar.LENGTH_INDEFINITE).show();
                             }
-                            else{   Toast.makeText(MainActivity.this,"Failed to Register!! Please Try Again...",Toast.LENGTH_LONG).show();
+                            else{
+                                Snackbar.make(findViewById(R.id.mainLayout), "Failed to Register!! Please Try Again...", Snackbar.LENGTH_LONG).show();
                             }
                         }catch (Exception e){
                             System.out.println(e.getMessage().toString());
@@ -245,18 +257,14 @@ public class MainActivity extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);  // this = context
         String url = "http://tcsapp.quicfind.com/oauth/access_token";
-        //Toast.makeText(MainActivity.this,"Oauth: called",Toast.LENGTH_LONG).show();
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>()
                 {
                     @Override
                     public void onResponse(String response) {
-                        //Toast.makeText(MainActivity.this,"try in",Toast.LENGTH_LONG).show();
                         try {
                             JSONObject jobj = new JSONObject(response);
                             oauth1=jobj.getString("access_token");
-                            //String err=jobj.getString("error").toString();
-                            //Toast.makeText(MainActivity.this,"Inside",Toast.LENGTH_LONG).show();
                             if(!oauth1.equals(""))
                             {
                                 //Do Nothing..... Signifies recieved Oauth correctly
