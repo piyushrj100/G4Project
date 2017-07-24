@@ -1,5 +1,8 @@
 package g4eis.ontern.g4project;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.design.widget.AppBarLayout;
@@ -11,8 +14,12 @@ import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class Dashboard extends AppCompatActivity {
+
+    SharedPreferences sharedpreferences;
+    public static final String MyPREFERENCES = "MyPrefs";
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
 
     @Override
@@ -59,6 +66,19 @@ public class Dashboard extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id==R.id.action_logout){
+            sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.clear();
+            editor.commit();
+            Intent signInIntent = new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(signInIntent);
+            finish();
+        }
+        if(id==R.id.action_settings){
+
+        }
         return super.onOptionsItemSelected(item);
     }
 }

@@ -152,10 +152,10 @@ public class MainActivity extends AppCompatActivity {
                                 editor.putBoolean("login",true);
                                 editor.commit();
                                 Toast.makeText(MainActivity.this,"Login successful...",Toast.LENGTH_LONG).show();
-                                //Intent chatIntent=new Intent(MainActivity.this,ChatActivity.class);
+                                Intent chatIntent=new Intent(MainActivity.this,Dashboard.class);
                                 //chatIntent.putExtra("userid",email);
-                                //startActivity(chatIntent);
-                                //finish();
+                                startActivity(chatIntent);
+                                finish();
                             }
                             else{
                                 editor.putBoolean("login",false);
@@ -204,10 +204,10 @@ public class MainActivity extends AppCompatActivity {
                             if(rslt.equals("true"))
                             {
                                 Toast.makeText(MainActivity.this,"Login successful...",Toast.LENGTH_LONG).show();
-                                //Intent chatIntent=new Intent(MainActivity.this,ChatActivity.class);
+                                Intent chatIntent=new Intent(MainActivity.this,Dashboard.class);
                                 //chatIntent.putExtra("userid",email);
-                                //startActivity(chatIntent);
-                                //finish();
+                                startActivity(chatIntent);
+                                finish();
                             }
                             else{
                                 Toast.makeText(MainActivity.this,"Wrong Credentials entered!! Try Again...",Toast.LENGTH_LONG).show();

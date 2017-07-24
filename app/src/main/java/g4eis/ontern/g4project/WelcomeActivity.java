@@ -76,7 +76,7 @@ public class WelcomeActivity extends AppCompatActivity {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchHomeScreen();
+                launchLoginScreen();
             }
         });
 
@@ -90,7 +90,7 @@ public class WelcomeActivity extends AppCompatActivity {
                     // move to next screen
                     viewPager.setCurrentItem(current);
                 } else {
-                    launchHomeScreen();
+                    launchLoginScreen();
                 }
             }
         });
@@ -122,6 +122,11 @@ public class WelcomeActivity extends AppCompatActivity {
 
     //redirecting to Dashboard if user is already logged in
     private void launchHomeScreen() {
+        startActivity(new Intent(WelcomeActivity.this, Dashboard.class));
+        finish();
+    }
+
+    private void launchLoginScreen(){
         startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
         finish();
     }
