@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         getOauth();
-        Toast.makeText(MainActivity.this,"Oauth1: "+oauth1,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MainActivity.this,"Oauth1: "+oauth1,Toast.LENGTH_SHORT).show();
 
         //For New User Registration
         btnNewUsr.setOnClickListener(new View.OnClickListener() {
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
     private void loginUser( final String email, final String password){
 
         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);  // this = context
-        String url = "http://api.mrasif.in/demo/gchat/login.php?";
+        String url = "http://tcsapp.quicfind.com/oauth/access_token";
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>()
                 {
@@ -148,13 +148,14 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jobj = new JSONObject(response);
-                            String rslt=jobj.getString("status").toString();
+                            String rslt=jobj.getString("access_token").toString();
+                            String token=jobj.getString("token_type").toString();
                             SharedPreferences.Editor editor = sharedpreferences.edit();
-                            if(rslt.equals("true"))
+                            if(token.equals("Bearer")&&!rslt.equals(""))
                             {
                                 editor.putString("uid",email);
                                 editor.putString("pwd",password);
-                                //editor.putString("token",);
+                                editor.putString("token",rslt);
                                 editor.putBoolean("login",true);
                                 editor.commit();
                                 Toast.makeText(MainActivity.this,"Login successful...",Toast.LENGTH_LONG).show();
@@ -186,8 +187,11 @@ public class MainActivity extends AppCompatActivity {
             {
                 //params to login url
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("userid",email );
-                params.put("pass",password )    ;
+                params.put("password",password );
+                params.put("grant_type","password");
+                params.put("client_id","0");
+                params.put("client_secret","public_secret");
+                params.put("username",email);
                 return params;
             }
         };
@@ -206,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
                         {   JSONObject jobj = new JSONObject(response);  //Response string to JSON
                             String rslt=jobj.getString("data").toString(); //extract response value from JSON
                             if(!rslt.equals(""))
-                            {   Snackbar.make(findViewById(R.id.mainLayout), "Registration successful!!!Please login with password recieved on email...", Snackbar.LENGTH_INDEFINITE).show();
+                            {   Snackbar.make(findViewById(R.id.mainLayout), "Registration successful!!!Please login with password \"abcd1234\"", Snackbar.LENGTH_INDEFINITE).show();
                             }
                             else{   Toast.makeText(MainActivity.this,"Failed to Register!! Please Try Again...",Toast.LENGTH_LONG).show();
                             }
@@ -229,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
                 Map<String, String>  params = new HashMap<String, String>();
                 params.put("email",email );
                 params.put("password","abcd1234");
-                params.put("access_token","eUMrH7DVHqQeQHxcvAX6XhgWpVpN7s8MRqGIOQTq");
+                params.put("access_token",oauth1);
                 return params;
             }
         };
@@ -247,22 +251,20 @@ public class MainActivity extends AppCompatActivity {
                 {
                     @Override
                     public void onResponse(String response) {
+                        //Toast.makeText(MainActivity.this,"try in",Toast.LENGTH_LONG).show();
                         try {
                             JSONObject jobj = new JSONObject(response);
-                            String oauth=jobj.getString("access_token");
+                            oauth1=jobj.getString("access_token");
                             //String err=jobj.getString("error").toString();
-                            Toast.makeText(MainActivity.this,"Oauth: ",Toast.LENGTH_LONG).show();
-                            if(!oauth.equals(""))
+                            //Toast.makeText(MainActivity.this,"Inside",Toast.LENGTH_LONG).show();
+                            if(!oauth1.equals(""))
                             {
-                                Toast.makeText(MainActivity.this,"Oauth: "+oauth,Toast.LENGTH_LONG).show();
-                                etPwd.setText("Oauth: "+oauth);
-                                //Intent chatIntent=new Intent(MainActivity.this,Dashboard.class);
-                                //chatIntent.putExtra("userid",email);
-                                //startActivity(chatIntent);
-                                //finish();
+                                //Do Nothing..... Signifies recieved Oauth correctly
                             }
                             else{
-                                //Toast.makeText(MainActivity.this,"Wrong Credentials entered!! Try Again...",Toast.LENGTH_LONG).show();
+                                Intent chatIntent=new Intent(getApplicationContext(),MainActivity.class);
+                                startActivity(chatIntent);
+                                finish();
                             }
                         }catch (Exception e){
                             System.out.println(e.getMessage().toString());
