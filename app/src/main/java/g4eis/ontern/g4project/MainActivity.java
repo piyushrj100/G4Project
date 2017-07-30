@@ -1,5 +1,6 @@
 package g4eis.ontern.g4project;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     private static final String MyPREFERENCES = "MyPrefs";
     private String oauth1;
+    private ProgressDialog mProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
         btnNewUsr = (Button) findViewById(R.id.btnNewUsr);
         btnForgot = (Button) findViewById(R.id.btnForgot);
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        mProgress = new ProgressDialog(this);
+        mProgress.setTitle("Logging you in...");
+        mProgress.setMessage("Please wait...");
+        mProgress.setCancelable(false);
+        mProgress.setIndeterminate(true);
 
         getOauth();
         //Toast.makeText(MainActivity.this,"Oauth1: "+oauth1,Toast.LENGTH_SHORT).show();
@@ -141,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
     //method for login request to server and checking server response
     private void loginUser( final String email, final String password){
 
+        mProgress.show();
         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);  // this = context
         String url = "http://tcsapp.quicfind.com/oauth/access_token";
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
@@ -173,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
                                 finish();
                             }
                             else {
+                                mProgress.dismiss();
                                 Snackbar.make(findViewById(R.id.mainLayout), "Wrong Credentials entered!! Try Again...", Snackbar.LENGTH_LONG).show();
                             }
                         }catch (Exception e){
@@ -187,6 +196,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        mProgress.dismiss();
                         Snackbar.make(findViewById(R.id.mainLayout), "Wrong Credentials entered or Server too Busy!! Try Again Later...", Snackbar.LENGTH_LONG).show();
 
                     }

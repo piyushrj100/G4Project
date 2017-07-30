@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Main2Activity"
-            android:label="Home">
+            android:label="Home"
+            android:theme="@style/AppTheme">
 
         </activity>
         <activity android:name=".WelcomeActivity"
