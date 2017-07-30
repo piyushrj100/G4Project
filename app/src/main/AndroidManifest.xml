@@ -14,11 +14,10 @@
         <activity android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".WelcomeActivity"
+            android:name=".Splashscreen"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -26,7 +25,7 @@
             android:label="Home">
 
         </activity>
-        <activity android:name=".Splashscreen"
+        <activity android:name=".WelcomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 

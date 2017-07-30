@@ -99,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
                 builder.setView(input);
                 builder.setTitle("Recover Your Password");
                 builder.setCancelable(false);
+                Snackbar.make(view, "Forgot Password will be available soon...",
+                        Snackbar.LENGTH_LONG).show();
                 builder.setMessage("Enter your registered e-mail id");
                 builder.setPositiveButton("Send Password", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {

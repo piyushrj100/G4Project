@@ -43,7 +43,7 @@ public class Splashscreen extends Activity {
                     finish();
                 }
                 else {
-                    Intent i = new Intent(Splashscreen.this, MainActivity.class);
+                    Intent i = new Intent(Splashscreen.this, WelcomeActivity.class);
                     startActivity(i);
 
 

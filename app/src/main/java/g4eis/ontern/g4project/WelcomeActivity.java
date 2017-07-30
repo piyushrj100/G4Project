@@ -36,14 +36,6 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Checking for user logged in or not - before calling setContentView()
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        Boolean data=sharedpreferences.getBoolean("login",false);
-        if (data==true) {
-            launchHomeScreen();
-            finish();
-        }
-
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
@@ -117,13 +109,6 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private int getItem(int i) {
         return viewPager.getCurrentItem() + i;
-    }
-
-
-    //redirecting to Dashboard if user is already logged in
-    private void launchHomeScreen() {
-        startActivity(new Intent(WelcomeActivity.this, Splashscreen.class));
-        finish();
     }
 
     private void launchLoginScreen(){
