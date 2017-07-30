@@ -122,7 +122,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     //redirecting to Dashboard if user is already logged in
     private void launchHomeScreen() {
-        startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+        startActivity(new Intent(WelcomeActivity.this, Main2Activity.class));
         finish();
     }
 
