@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("g4eis.ontern.g4project", appContext.getPackageName());
+        assertEquals("g4eis.ontern.try2", appContext.getPackageName());
     }
 }

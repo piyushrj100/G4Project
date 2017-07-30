@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                                 editor.commit();
                                 Toast.makeText(MainActivity.this, "Login Successful...", Toast.LENGTH_SHORT).show();
                                 //Snackbar.make(findViewById(R.id.dashLayout), "Login Successful...", Snackbar.LENGTH_LONG).show();
-                                Intent chatIntent=new Intent(MainActivity.this,Dashboard.class);
+                                Intent chatIntent=new Intent(MainActivity.this,Main2Activity.class);
                                 //chatIntent.putExtra("userid",email);
                                 startActivity(chatIntent);
                                 finish();

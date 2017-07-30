@@ -47,6 +47,9 @@
     <string name="activity_title_about_us">About Us</string>
     <string name="action_clear_all">Clear All</string>
     <string name="action_logout">Logout</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="title_activity_main3">Main3Activity</string>
 
 
 </resources>
