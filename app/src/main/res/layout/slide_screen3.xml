@@ -22,7 +22,7 @@
             android:layout_width="300dp"
             android:layout_height="250dp"
             android:alpha="0.94"
-            android:src="@drawable/banner"
+            android:src="@drawable/ovrwrite3"
             android:scaleType="fitXY"
             />
         <TextView

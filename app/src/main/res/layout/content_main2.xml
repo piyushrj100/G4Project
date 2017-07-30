@@ -14,68 +14,53 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginBottom="20dp">
-
-
-
-            <android.support.v7.widget.CardView
-
-                card_view:contentPadding="5dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:orientation="vertical">
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                card_view:cardCornerRadius="4dp"
-                android:layout_marginTop="21dp"
-                android:id="@+id/cardView6">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="130dp"
-                        android:elevation="4dp"
-
-                        android:src="@mipmap/pro"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/card_2"
-                        android:elevation="4dp"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="30dp"
-
-                        android:gravity="center"/>
-                </LinearLayout>
+                android:layout_height="150dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/welc"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
 
-            </android.support.v7.widget.CardView>
 
+
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+
+                 android:orientation="vertical">
             <android.support.v7.widget.CardView
                 card_view:contentPadding="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="170dp"
-                android:layout_margin="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="145dp"
+                card_view:cardBackgroundColor="#9e9e9e"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
                 card_view:cardCornerRadius="4dp"
-                android:layout_marginTop="21dp"
+                android:layout_marginTop="25dp"
                 android:id="@+id/cardView4">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/textView2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:layout_marginTop="20dp"
-                        android:elevation="4dp"
-                        android:layout_gravity="center"
-                        android:src="@mipmap/dos_dont"/>
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:elevation="4dp"
+                    android:textSize="30dp"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:text="@string/card_2"/>
 
             </android.support.v7.widget.CardView>
 
@@ -84,62 +69,87 @@
 
                 card_view:contentPadding="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_height="145dp"
+                android:layout_marginLeft="10dp"
                 card_view:cardCornerRadius="4dp"
-                android:layout_marginTop="21dp"
-                android:id="@+id/cardView1"
-                android:layout_marginStart="14dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="140dp"
-                        android:src="@mipmap/contactss"/>
+                card_view:cardBackgroundColor="#009688"
+                android:layout_marginTop="5dp"
+                card_view:cardElevation="4dp"
+                android:id="@+id/cardView1">
+
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/card_4"
+                        android:text="@string/card_3"
                         android:textSize="25dp"
-                        android:textColor="@color/colorPrimary"/>
-                </LinearLayout>
+                        android:gravity="center"
+
+                        android:layout_gravity="center"
+                        android:textColor="@android:color/white"/>
+
 
             </android.support.v7.widget.CardView>
+                 </LinearLayout>
+            <android.support.v7.widget.CardView
+
+                card_view:contentPadding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginEnd="10dp"
+                card_view:cardElevation="4dp"
+                android:layout_marginStart="10dp"
+                card_view:cardBackgroundColor="#e91e63"
+                card_view:cardCornerRadius="4dp"
+                android:layout_marginTop="25dp"
+
+                android:id="@+id/cardView6">
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:text="@string/card_4"
+
+                    android:textColor="#fff"
+                    android:textSize="30dp" />
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
 
             <android.support.v7.widget.CardView
 
 
                 card_view:contentPadding="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_height="145dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                card_view:cardElevation="4dp"
+                android:layout_marginBottom="40dp"
+                 card_view:cardBackgroundColor="#3f51b5"
                 card_view:cardCornerRadius="4dp"
                 android:layout_marginTop="21dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="130dp"
-                        android:src="@mipmap/tcs_campus"/>
+
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/card_5"
                         android:layout_marginTop="2dp"
                         android:textSize="30dp"
-                        android:textColor="@color/colorPrimary"
+                        android:layout_gravity="center"
+
+                        android:textColor="@android:color/white"
                         android:gravity="center"/>
-                </LinearLayout>
+
 
             </android.support.v7.widget.CardView>
+
+
+
         </LinearLayout>
-
-
-
     </android.support.v4.widget.NestedScrollView>
 
 
