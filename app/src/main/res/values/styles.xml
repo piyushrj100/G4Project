@@ -17,8 +17,11 @@
 
     </style>
 
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-    </style><!--Added later for collapsable toolbar-->
+    </style>
+
+    <style name="UserTheme" parent="Theme.AppCompat.Light.NoActionBar" /><!--Added later for collapsable toolbar-->
 </resources>
