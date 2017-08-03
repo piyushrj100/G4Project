@@ -13,51 +13,53 @@ public class ExpandableData {
         HashMap<String, List<String>> expandableListDetail = new HashMap<String, List<String>>();
 
         List<String> Mumbai = new ArrayList<String>();
-        Mumbai.add("Campus1");
-        Mumbai.add("Campus2");
-        Mumbai.add("Campus3");
-        Mumbai.add("Campus4");
-
+        Mumbai.add("Gateway Park");
+        Mumbai.add("Nortel Park");
+        Mumbai.add("Vidyasagar Building");
+        Mumbai.add("Akruti Trade Center");
+        Mumbai.add("Search all campuses!");
 
         List<String> Kolkata = new ArrayList<String>();
-        Kolkata.add("Campus1");
-        Kolkata.add("Campus2");
-        Kolkata.add("Campus3");
-        Kolkata.add("Campus4");
-
+        Kolkata.add("Gitanjali Park");
+        Kolkata.add("SDF Building");
+        Kolkata.add("Unitech");
+        Kolkata.add("Delta Park");
+        Kolkata.add("Search all campuses!");
 
         List<String> Chennai = new ArrayList<String>();
-        Chennai.add("Campus1");
-        Chennai.add("Campus2");
-        Chennai.add("Campus3");
-        Chennai.add("Campus4");
-
+        Chennai.add("Mangal Tirth Estate");
+        Chennai.add("Tower Victorie");
+        Chennai.add("DLF IT Park");
+        Chennai.add("Sonex Towers");
+        Chennai.add("Search all campuses!");
 
         List<String> Delhi = new ArrayList<String>();
-       Delhi.add("Campus1");
-        Delhi.add("Campus2");
-        Delhi.add("Campus3");
-        Delhi.add("Campus4");
-
+       Delhi.add("PTI Building");
+        Delhi.add("Noida");
+        Delhi.add("Udyog Vihar");
+        Delhi.add("TCS Towers");
+        Delhi.add("Search all campuses!");
 
         List<String> Hyderabad = new ArrayList<String>();
-        Hyderabad.add("Campus1");
-        Hyderabad.add("Campus2");
-        Hyderabad.add("Campus3");
-        Hyderabad.add("Campus4");
-
+        Hyderabad.add("Deccan Park");
+        Hyderabad.add("Autoplaza Building");
+        Hyderabad.add("Synergy Park");
+        Hyderabad.add("Kohinoor Park");
+        Hyderabad.add("Search all campuses!");
 
         List<String> Bengaluru = new ArrayList<String>();
-        Bengaluru.add("Campus1");
-        Bengaluru.add("Campus2");
-        Bengaluru.add("Campus3");
-        Bengaluru.add("Campus4");
+        Bengaluru.add("Gandhi Nagar");
+        Bengaluru.add("Abhilash Building");
+        Bengaluru.add("International Tech Park");
+        Bengaluru.add("SJM Towers");
+        Bengaluru.add("Search all campuses!");
 
         List<String> Pune = new ArrayList<String>();
-       Pune.add("Campus1");
-        Pune.add("Campus2");
-        Pune.add("Campus3");
-        Pune.add("Campus4");
+       Pune.add("Hadapsar Industrial Estate");
+        Pune.add("Godrej Millenium Condominium");
+        Pune.add("Sahyadri Park");
+        Pune.add("Electronic Sadan");
+        Pune.add("Search all campuses!");
 
 
 

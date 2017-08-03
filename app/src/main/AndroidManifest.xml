@@ -16,18 +16,20 @@
         <activity
             android:name=".WelcomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity android:name=".Main2Activity"
+            android:label="Home">
+        </activity>
+        <activity android:name=".Splashscreen"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".Campus" android:label="Campus">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".Main2Activity"
-            android:label="Home">
-
-        </activity>
-        <activity android:name=".Splashscreen"
-            android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
     </application>
