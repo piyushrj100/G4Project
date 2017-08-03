@@ -59,7 +59,7 @@ public class Main2Activity extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(Main2Activity.this, Accounts.class);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
 
@@ -68,7 +68,6 @@ public class Main2Activity extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(Main2Activity.this, ImportantContacts.class);
                 startActivity(intent);
-                finish();
 
             }
         });
@@ -78,7 +77,7 @@ public class Main2Activity extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(Main2Activity.this, TabWithIconActivity.class);
                 startActivity(intent);
-                finish();
+
             }
         });
 
@@ -87,7 +86,7 @@ public class Main2Activity extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(Main2Activity.this, Campus.class);
                 startActivity(intent);
-                finish();
+
             }
         });
     }
