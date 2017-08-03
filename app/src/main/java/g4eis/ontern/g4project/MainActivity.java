@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
                             JSONObject jobj = new JSONObject(response);
                             if(jobj.length()==0)
                             {
-                                Snackbar.make(findViewById(R.id.mainLayout), "Empty JSON...", Snackbar.LENGTH_LONG).show();
+                                Snackbar.make(findViewById(R.id.mainLayout), "Empty response from Server...", Snackbar.LENGTH_LONG).show();
                                 return;
                             }
                             String rslt=jobj.getString("access_token").toString();
@@ -221,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
     //method for password request to server for 1st time users
     private void getPwd( final String email){
         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);  // this = context
-        String url = "http://tcsapp.quicfind.com/users/new";
+        String url = "http://tcsapp.quicfind.com/users/register";
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>()
                 {
@@ -233,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
                             String rslt=jobj.getString("data").toString(); //extract response value from JSON
                             if(!rslt.equals(""))
                             {
-                                Snackbar.make(findViewById(R.id.mainLayout), "Registration successful!!!Please login with password \"abcd1234\"", Snackbar.LENGTH_INDEFINITE).show();
+                                Snackbar.make(findViewById(R.id.mainLayout), "Registration successful!!!Login with password recieved on your e-mail ", Snackbar.LENGTH_INDEFINITE).show();
                             }
                             else{
                                 Snackbar.make(findViewById(R.id.mainLayout), "Failed to Register!! Please Try Again...", Snackbar.LENGTH_LONG).show();
@@ -255,8 +255,7 @@ public class MainActivity extends AppCompatActivity {
             protected Map<String, String> getParams()
             {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("email",email );
-                params.put("password","abcd1234");
+                params.put("email",email);
                 params.put("access_token",oauth1);
                 return params;
             }
