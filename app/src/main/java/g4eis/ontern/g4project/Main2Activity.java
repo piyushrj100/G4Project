@@ -1,11 +1,12 @@
 package g4eis.ontern.g4project;
-
+//Written by Piyush Raja
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,20 +16,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import g4eis.ontern.g4project.R;
+import g4eis.ontern.g4project.ViewPagerActivity.TabWithIconActivity;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs";
+    public CardView card1;
+    public CardView card2;
+    public CardView card3;
+    public CardView card4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
 
 
 
@@ -41,7 +48,51 @@ public class Main2Activity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        CardView card1=(CardView) findViewById(R.id.cardView1);
+        CardView card2=(CardView) findViewById(R.id.cardView2);
+        CardView card3=(CardView) findViewById(R.id.cardView3);
+        CardView card4=(CardView) findViewById(R.id.cardView4);
+
+
+        card1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Main2Activity.this, Accounts.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        card2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Main2Activity.this, ImportantContacts.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
+        card3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Main2Activity.this, TabWithIconActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        card4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Main2Activity.this, Campus.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
+
+
 
     @Override
     public void onBackPressed() {
@@ -91,7 +142,7 @@ public class Main2Activity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
+            // Handle the variation actions
         } else if (id == R.id.nav_Profile) {
 
         } else if (id == R.id.nav_settings) {
