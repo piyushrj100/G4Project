@@ -25,13 +25,13 @@
 
         <android.support.design.widget.TabItem
             android:id="@+id/tab1"
-            android:icon="@drawable/ic_thumb_down_black_24dp"
+            android:icon="@drawable/ic_thumb_up_black_24dp"
             style="@style/tab_item"
             android:text="DO'S"/>
 
         <android.support.design.widget.TabItem
             android:id="@+id/tab2"
-            android:icon="@drawable/ic_thumb_up_black_24dp"
+            android:icon="@drawable/ic_thumb_down_black_24dp"
             style="@style/tab_item"
              android:text="DON'TS"/>
         </android.support.design.widget.TabLayout>
