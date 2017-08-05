@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     private static final String MyPREFERENCES = "MyPrefs";
     private String oauth1;
-    private ProgressDialog mProgress;
+    private ProgressDialog mProgress,m2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
         mProgress.setMessage("Please wait...");
         mProgress.setCancelable(false);
         mProgress.setIndeterminate(true);
+        m2 = new ProgressDialog(this);
+        m2.setTitle("Registering you ...");
+        m2.setMessage("Please wait...");
+        m2.setCancelable(false);
+        m2.setIndeterminate(true);
 
         getOauth();
         //Toast.makeText(MainActivity.this,"Oauth1: "+oauth1,Toast.LENGTH_SHORT).show();
@@ -220,6 +225,7 @@ public class MainActivity extends AppCompatActivity {
 
     //method for password request to server for 1st time users
     private void getPwd( final String email){
+        m2.show();
         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);  // this = context
         String url = "http://tcsapp.quicfind.com/users/register";
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
@@ -230,12 +236,16 @@ public class MainActivity extends AppCompatActivity {
                         try
                         {
                             JSONObject jobj = new JSONObject(response);  //Response string to JSON
-                            String rslt=jobj.getString("data").toString(); //extract response value from JSON
-                            if(!rslt.equals(""))
+                            String rslt=jobj.getString("error").toString(); //extract response value from JSON
+                            if(rslt.equals(""))
                             {
-                                Snackbar.make(findViewById(R.id.mainLayout), "Registration successful!!!Login with password recieved on your e-mail ", Snackbar.LENGTH_INDEFINITE).show();
+                                m2.dismiss();
+                                Toast.makeText(MainActivity.this, "Registration Successful...", Toast.LENGTH_SHORT).show();
+                                Snackbar.make(findViewById(R.id.mainLayout), "Registration successful!!!Login with password recieved on your " +
+                                        "e-mail", Snackbar.LENGTH_INDEFINITE).show();
                             }
                             else{
+                                m2.dismiss();
                                 Snackbar.make(findViewById(R.id.mainLayout), "Failed to Register!! Please Try Again...", Snackbar.LENGTH_LONG).show();
                             }
                         }catch (Exception e){
@@ -247,6 +257,8 @@ public class MainActivity extends AppCompatActivity {
                 {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        m2.dismiss();
+
                     }
                 }
         ) {
