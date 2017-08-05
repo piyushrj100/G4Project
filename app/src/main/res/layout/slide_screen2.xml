@@ -22,10 +22,10 @@
             android:textStyle="bold" />
         <ImageView
             android:layout_width="300dp"
-            android:layout_height="250dp"
-            android:src="@drawable/contactus1"
             android:scaleType="fitXY"
-             />
+            android:layout_height="250dp"
+
+            android:src="@drawable/contactus1"/>
 
         <TextView
             android:id="@+id/textView2"
