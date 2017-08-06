@@ -7,7 +7,7 @@
     tools:context="g4eis.ontern.g4project.Accounts">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
@@ -18,7 +18,12 @@
 
                 android:layout_height="?android:attr/actionBarSize"
                 app:layout_collapseMode="pin">
+                <android.support.v7.widget.SearchView
+                    android:id="@+id/search"
 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true" />
             </android.support.v7.widget.Toolbar>
 
 

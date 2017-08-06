@@ -26,11 +26,7 @@
         <activity
             android:name=".Splashscreen"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Campus"
@@ -41,7 +37,13 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Accounts"
             android:label="Accounts"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ViewPagerActivity.TabWithIconActivity"
             android:label="@string/title_dos_donts"/>
     </application>
