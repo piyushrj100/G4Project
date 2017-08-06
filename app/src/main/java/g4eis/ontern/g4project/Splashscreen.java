@@ -12,6 +12,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.famoussoft.libs.JSON.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Splashscreen extends Activity {
 
@@ -19,6 +31,7 @@ public class Splashscreen extends Activity {
     private static int SPLASH_TIME_OUT = 3000;
     SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs";
+    private String oauth2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +52,9 @@ public class Splashscreen extends Activity {
                 sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                 Boolean data=sharedpreferences.getBoolean("login",false);
                 if (data==true) {
+                    String uname=sharedpreferences.getString("uid","null");
+                    String pass=sharedpreferences.getString("pwd","null");
+                    getOauth(uname,pass);
                     startActivity(new Intent(Splashscreen.this, Main2Activity.class));
                     finish();
                 }
@@ -54,4 +70,58 @@ public class Splashscreen extends Activity {
         }, SPLASH_TIME_OUT);
     }
 
+    private void getOauth(final String email, final String pwd){
+
+        RequestQueue queue = Volley.newRequestQueue(Splashscreen.this);  // this = context
+        String url = "http://tcsapp.quicfind.com/oauth/access_token";
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jobj = new JSONObject(response);
+                            oauth2=jobj.getString("access_token");
+                            if(!oauth2.equals(""))
+                            {
+                                //Do Nothing..... Signifies recieved Oauth correctly
+                                SharedPreferences.Editor editor = sharedpreferences.edit();
+                                editor.putString("oauth",oauth2);
+                                editor.commit();
+                                //Toast.makeText(Splashscreen.this, "print"+oauth2, Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                Intent chatIntent=new Intent(getApplicationContext(),Accounts.class);
+                                startActivity(chatIntent);
+                                finish();
+                            }
+                        }catch (Exception e){
+                            System.out.println(e.getMessage().toString());
+                        }
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        Toast.makeText(Splashscreen.this, "oauth"+error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                //params to login url
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("password",pwd );
+                params.put("grant_type","password");
+                params.put("client_id","0");
+                params.put("client_secret","public_secret");
+                params.put("username",email);
+                return params;
+            }
+        };
+        queue.add(postRequest);
+    }
 }
