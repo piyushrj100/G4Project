@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +30,7 @@ public class Accounts extends AppCompatActivity {
 
     protected String oauth2;
     private int total=0;
+    public int id;
     JSONArray message=null;
     SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs";
@@ -93,32 +96,47 @@ public class Accounts extends AppCompatActivity {
         for (int i=0; i<5; i++) {
             JSONObject jobj=new JSONObject(jarray.getJSONObject(i).toString());
             String name = jobj.getString("name").toString();
-            int id = jobj.getInt("id");
+            id = jobj.getInt("id");
 
             LinearLayout ll = new LinearLayout(this);
             ll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));
             ll.setOrientation(LinearLayout.VERTICAL);
-            ll.setPadding(0, 0, 0, 2);
+            ll.setPadding(10, 10, 10, 10);
 
-            LinearLayout sll = new LinearLayout(this);
-            sll.setId(i);
+            final LinearLayout sll = new LinearLayout(this);
+            sll.setId(id);
             sll.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-            sll.setPadding(5, 5, 5, 5);
+            sll.setPadding(15, 15, 5, 15);
             sll.setOrientation(LinearLayout.VERTICAL);
             //sll.setBackgroundColor(Color.WHITE);
 
             TextView tvTitle = new TextView(this);
             tvTitle.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-            tvTitle.setText(Html.fromHtml("<b><i>"+id+"</i></b>"+" : "+name));
+            tvTitle.setText(Html.fromHtml("<big><b><h3><i>"+"</i></b>"+""+name+"</h3></big>"));
             tvTitle.setTextColor(Color.BLACK);
+            tvTitle.setClickable(true);
+            tvTitle.setGravity(Gravity.CENTER);
+            tvTitle.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(Accounts.this,"Clicked "+sll.getId(),Toast.LENGTH_LONG).show();
+                    accountDetails(sll.getId());
+                }
+            });
 
             sll.addView(tvTitle);
 
             ll.addView(sll);
             mainLayout.addView(ll);
         }
+    }
+
+    private void accountDetails(final int id){
+        Intent chatIntent=new Intent(Accounts.this,AccDetails.class);
+        chatIntent.putExtra("accid",id);
+        startActivity(chatIntent);
     }
 }
 

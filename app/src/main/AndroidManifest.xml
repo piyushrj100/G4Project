@@ -45,7 +45,10 @@
         <activity android:name=".Accounts"
             android:label="Accounts"
             android:theme="@style/AppTheme.NoActionBar">
-
+        </activity>
+        <activity android:name=".AccDetails"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="AccDetails">
         </activity>
         <activity android:name=".ViewPagerActivity.TabWithIconActivity"
             android:label="@string/title_dos_donts"/>

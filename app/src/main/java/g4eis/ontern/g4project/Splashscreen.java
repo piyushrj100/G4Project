@@ -31,7 +31,7 @@ public class Splashscreen extends Activity {
     private static int SPLASH_TIME_OUT = 3000;
     SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs";
-    private String oauth2;
+    private String oauth2,oauth1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +59,9 @@ public class Splashscreen extends Activity {
                     finish();
                 }
                 else {
+                    getOauth1();
                     Intent i = new Intent(Splashscreen.this, WelcomeActivity.class);
                     startActivity(i);
-
-
                     // close this activity
                     finish();
                 }
@@ -91,7 +90,7 @@ public class Splashscreen extends Activity {
                                 //Toast.makeText(Splashscreen.this, "print"+oauth2, Toast.LENGTH_LONG).show();
                             }
                             else{
-                                Intent chatIntent=new Intent(getApplicationContext(),Accounts.class);
+                                Intent chatIntent=new Intent(getApplicationContext(),Splashscreen.class);
                                 startActivity(chatIntent);
                                 finish();
                             }
@@ -119,6 +118,61 @@ public class Splashscreen extends Activity {
                 params.put("client_id","0");
                 params.put("client_secret","public_secret");
                 params.put("username",email);
+                return params;
+            }
+        };
+        queue.add(postRequest);
+    }
+
+    private void getOauth1(){
+
+        RequestQueue queue = Volley.newRequestQueue(Splashscreen.this);  // this = context
+        String url = "http://tcsapp.quicfind.com/oauth/access_token";
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jobj = new JSONObject(response);
+                            oauth1=jobj.getString("access_token");
+                            if(!oauth1.equals(""))
+                            {
+                                //Do Nothing..... Signifies recieved Oauth correctly
+                                SharedPreferences.Editor editor = sharedpreferences.edit();
+                                editor.putString("oauth_login",oauth1);
+                                editor.commit();
+                                //Toast.makeText(Splashscreen.this, "print"+oauth2, Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                Intent chatIntent=new Intent(getApplicationContext(),Splashscreen.class);
+                                startActivity(chatIntent);
+                                finish();
+                            }
+                        }catch (Exception e){
+                            System.out.println(e.getMessage().toString());
+                        }
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        Toast.makeText(Splashscreen.this, "oauth1 "+error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                //params to login url
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("password","password" );
+                params.put("grant_type","password");
+                params.put("client_id","0");
+                params.put("client_secret","public_secret");
+                params.put("username","public@tcs.com");
                 return params;
             }
         };

@@ -9,7 +9,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,9 +60,8 @@ public class MainActivity extends AppCompatActivity {
         m2.setIndeterminate(true);
 
 
-        getOauth();
-        //Toast.makeText(MainActivity.this,"Oauth1: "+oauth1,Toast.LENGTH_SHORT).show();
-
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        oauth1=sharedpreferences.getString("oauth_login","null");
         //For New User Registration
         btnNewUsr.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor = sharedpreferences.edit();
                             if(!rslt.equals(null)&&token.equals("Bearer"))
                             {
+                                editor.putString("oauth",oauth1);
                                 editor.putString("uid",email);
                                 editor.putString("pwd",password);
                                 editor.putString("token",rslt);
@@ -277,54 +276,4 @@ public class MainActivity extends AppCompatActivity {
         queue.add(postRequest);
     }
 
-
-    private void getOauth(){
-
-        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);  // this = context
-        String url = "http://tcsapp.quicfind.com/oauth/access_token";
-        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                new Response.Listener<String>()
-                {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jobj = new JSONObject(response);
-                            oauth1=jobj.getString("access_token");
-                            if(!oauth1.equals(""))
-                            {
-                                //Do Nothing..... Signifies recieved Oauth correctly
-                            }
-                            else{
-                                Intent chatIntent=new Intent(getApplicationContext(),MainActivity.class);
-                                startActivity(chatIntent);
-                                finish();
-                            }
-                        }catch (Exception e){
-                            System.out.println(e.getMessage().toString());
-                        }
-                    }
-                },
-                new Response.ErrorListener()
-                {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                }
-        ) {
-            @Override
-            protected Map<String, String> getParams()
-            {
-                //params to login url
-                Map<String, String>  params = new HashMap<String, String>();
-                params.put("password","password" );
-                params.put("grant_type","password");
-                params.put("client_id","0");
-                params.put("client_secret","public_secret");
-                params.put("username","public@tcs.com");
-                return params;
-            }
-        };
-        queue.add(postRequest);
-    }
 }
