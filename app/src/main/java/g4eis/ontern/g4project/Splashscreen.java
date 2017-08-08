@@ -37,7 +37,7 @@ public class Splashscreen extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splashscreen);
-
+        getOauth1();
         new Handler().postDelayed(new Runnable() {
 
             /*
@@ -49,17 +49,15 @@ public class Splashscreen extends Activity {
             public void run() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
-                getOauth1();
                 sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                 Boolean data=sharedpreferences.getBoolean("login",false);
                 if (data==true) {
-                    String uname=sharedpreferences.getString("uid","null");
-                    String pass=sharedpreferences.getString("pwd","null");
-                    //getOauth(uname,pass);
+
                     startActivity(new Intent(Splashscreen.this, Main2Activity.class));
                     finish();
                 }
                 else {
+
                     Intent i = new Intent(Splashscreen.this, WelcomeActivity.class);
                     startActivity(i);
                     // close this activity
@@ -68,6 +66,7 @@ public class Splashscreen extends Activity {
             }
         }, SPLASH_TIME_OUT);
     }
+
 
 
     private void getOauth1(){
