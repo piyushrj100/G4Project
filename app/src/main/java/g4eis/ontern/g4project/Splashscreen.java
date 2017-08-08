@@ -31,13 +31,13 @@ public class Splashscreen extends Activity {
     private static int SPLASH_TIME_OUT = 3000;
     SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs";
-    private String oauth2;
+    private String oauth2,oauth1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splashscreen);
-
+        getOauth1();
         new Handler().postDelayed(new Runnable() {
 
             /*
@@ -52,17 +52,14 @@ public class Splashscreen extends Activity {
                 sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                 Boolean data=sharedpreferences.getBoolean("login",false);
                 if (data==true) {
-                    String uname=sharedpreferences.getString("uid","null");
-                    String pass=sharedpreferences.getString("pwd","null");
-                    getOauth(uname,pass);
+
                     startActivity(new Intent(Splashscreen.this, Main2Activity.class));
                     finish();
                 }
                 else {
+
                     Intent i = new Intent(Splashscreen.this, WelcomeActivity.class);
                     startActivity(i);
-
-
                     // close this activity
                     finish();
                 }
@@ -70,7 +67,9 @@ public class Splashscreen extends Activity {
         }, SPLASH_TIME_OUT);
     }
 
-    private void getOauth(final String email, final String pwd){
+
+
+    private void getOauth1(){
 
         RequestQueue queue = Volley.newRequestQueue(Splashscreen.this);  // this = context
         String url = "http://tcsapp.quicfind.com/oauth/access_token";
@@ -81,17 +80,17 @@ public class Splashscreen extends Activity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jobj = new JSONObject(response);
-                            oauth2=jobj.getString("access_token");
-                            if(!oauth2.equals(""))
+                            oauth1=jobj.getString("access_token");
+                            if(!oauth1.equals(""))
                             {
                                 //Do Nothing..... Signifies recieved Oauth correctly
                                 SharedPreferences.Editor editor = sharedpreferences.edit();
-                                editor.putString("oauth",oauth2);
+                                editor.putString("oauth_login",oauth1);
                                 editor.commit();
                                 //Toast.makeText(Splashscreen.this, "print"+oauth2, Toast.LENGTH_LONG).show();
                             }
                             else{
-                                Intent chatIntent=new Intent(getApplicationContext(),Accounts.class);
+                                Intent chatIntent=new Intent(getApplicationContext(),Splashscreen.class);
                                 startActivity(chatIntent);
                                 finish();
                             }
@@ -105,7 +104,7 @@ public class Splashscreen extends Activity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        Toast.makeText(Splashscreen.this, "oauth"+error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(Splashscreen.this, "oauth1 "+error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
         ) {
@@ -114,11 +113,11 @@ public class Splashscreen extends Activity {
             {
                 //params to login url
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("password",pwd );
+                params.put("password","password" );
                 params.put("grant_type","password");
                 params.put("client_id","0");
                 params.put("client_secret","public_secret");
-                params.put("username",email);
+                params.put("username","public@tcs.com");
                 return params;
             }
         };
