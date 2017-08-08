@@ -3,9 +3,12 @@ package g4eis.ontern.g4project;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.view.Gravity;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,9 +18,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.famoussoft.libs.JSON.JSONArray;
 import com.famoussoft.libs.JSON.JSONObject;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -38,14 +43,14 @@ public class AccDetails extends AppCompatActivity {
 
         acc_name = (TextView) findViewById(R.id.acc_name);
         accHead = (TextView) findViewById(R.id.accHead);
-        acc_name = (TextView) findViewById(R.id.acc_name);
-        acc_name = (TextView) findViewById(R.id.acc_name);
+        accOdc = (TextView) findViewById(R.id.accOdc);
+        accMgr = (TextView) findViewById(R.id.accMgr);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         oauth = sharedpreferences.getString("oauth","null");
 
-        Intent chatIntent=getIntent();
-        String id=chatIntent.getStringExtra("id");
+        //Intent chatIntent=getIntent();
+        String id=getIntent().getStringExtra("accid");
 
         getData(oauth,id);
 
@@ -63,9 +68,30 @@ public class AccDetails extends AppCompatActivity {
                         try {
                             JSONObject jobj = new JSONObject(response);
                             JSONObject data=jobj.getJSONObject("data");
+                            JSONArray jarray=new JSONArray(data.getJSONArray("contacts").toString());
                             if(!data.equals(""))
                             {
-                                acc_name.setText(data.getString("name"));
+                                String accnm=data.getString("name").toString();
+                                acc_name.setGravity(Gravity.CENTER);
+                                acc_name.setText(accnm);
+                                JSONObject jobj1=new JSONObject(jarray.getJSONObject(0).toString());
+                                String role = jobj1.getString("role").toString();
+                                String name=jobj1.getString("name").toString();
+                                String email=jobj1.getString("email").toString();
+                                String desk=jobj1.getString("deskno").toString();
+                                accOdc.setTextColor(Color.BLACK);
+                                accOdc.setText(Html.fromHtml("<big>"+role+":</big> <br>Name : "+name+"<br>Email : "+email+
+                                        "<br>Desk No : "+desk));
+
+                                JSONObject jobj2=new JSONObject(jarray.getJSONObject(1).toString());
+                                role = jobj2.getString("role").toString();
+                                name=jobj2.getString("name").toString();
+                                email=jobj2.getString("email").toString();
+                                desk=jobj2.getString("deskno").toString();
+                                accHead.setTextColor(Color.BLACK);
+                                accHead.setText(Html.fromHtml("<big>"+role+":</big> <br>Name : "+name+"<br>Email : "+email+
+                                        "<br>Desk No : "+desk));
+
                                 //Toast.makeText(Splashscreen.this, "print"+oauth2, Toast.LENGTH_LONG).show();
                             }
                             else{

@@ -69,7 +69,7 @@ public class Accounts extends AppCompatActivity {
                 {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Accounts.this, "volley "+error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(Accounts.this, "volley error"+error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
         ) {
@@ -121,7 +121,7 @@ public class Accounts extends AppCompatActivity {
             tvTitle.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(Accounts.this,"Clicked "+sll.getId(),Toast.LENGTH_LONG).show();
+                    //Toast.makeText(Accounts.this,"Clicked "+sll.getId(),Toast.LENGTH_LONG).show();
                     accountDetails(sll.getId());
                 }
             });
@@ -135,7 +135,8 @@ public class Accounts extends AppCompatActivity {
 
     private void accountDetails(final int id){
         Intent chatIntent=new Intent(Accounts.this,AccDetails.class);
-        chatIntent.putExtra("accid",id);
+        String id1=Integer.toString(id);
+        chatIntent.putExtra("accid",id1);
         startActivity(chatIntent);
     }
 }
