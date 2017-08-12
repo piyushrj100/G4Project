@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.Gravity;
@@ -26,20 +27,24 @@ import com.famoussoft.libs.JSON.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Accounts extends AppCompatActivity {
+public class Accounts extends AppCompatActivity implements SearchView.OnQueryTextListener{
 
-    protected String oauth2;
+    protected String oauth2,qry="";
     private int total=0;
     public int id;
     JSONArray message=null;
     SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs";
+    SearchView editSearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accounts);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        editSearch = (SearchView) findViewById(R.id.search);
+        editSearch.setOnQueryTextListener(this);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         oauth2=sharedpreferences.getString("oauth","null");
@@ -78,7 +83,7 @@ public class Accounts extends AppCompatActivity {
             {
                 Map<String, String>  params = new HashMap<String, String>();
                 params.put("access_token",oauth2 );
-                params.put("query","");
+                params.put("query",qry);
                 return params;
             }
         };
@@ -93,7 +98,7 @@ public class Accounts extends AppCompatActivity {
         //this.total=total;
         JSONArray jarray=new JSONArray(data.getJSONArray("data").toString());
         message=jarray;
-        for (int i=0; i<5; i++) {
+        for (int i=0; i<jarray.length(); i++) {
             JSONObject jobj=new JSONObject(jarray.getJSONObject(i).toString());
             String name = jobj.getString("name").toString();
             id = jobj.getInt("id");
@@ -138,6 +143,23 @@ public class Accounts extends AppCompatActivity {
         String id1=Integer.toString(id);
         chatIntent.putExtra("accid",id1);
         startActivity(chatIntent);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        this.qry=query;
+        downloadData();
+        //Toast.makeText(Accounts.this,"Submit "+query,Toast.LENGTH_LONG).show();
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        this.qry = newText;
+        downloadData();
+        //adapter.filter(text);
+        //Toast.makeText(Accounts.this,"Change "+newText,Toast.LENGTH_LONG).show();
+        return false;
     }
 }
 
