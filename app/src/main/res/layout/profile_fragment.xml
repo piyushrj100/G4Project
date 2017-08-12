@@ -61,11 +61,11 @@
                 android:id="@+id/nam"
                 android:textStyle="bold"
                 android:textSize="25dp"
-                android:layout_weight="1"/>
+                android:layout_weight="3"/>
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_weight="1"
                     android:src="@drawable/edit"
                     android:background="?actionBarItemBackground"/>
 
@@ -84,11 +84,11 @@
                         android:id="@+id/add"
                         android:textStyle="bold"
                         android:textSize="25dp"
-                        android:layout_weight="1"/>
+                        android:layout_weight="3"/>
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
+                        android:layout_weight="1"
                         android:src="@drawable/edit"
                         android:background="?actionBarItemBackground"/>
 
@@ -108,11 +108,11 @@
                         android:id="@+id/acnt"
                         android:textStyle="bold"
                         android:textSize="25sp"
-                        android:layout_weight="1"/>
+                        android:layout_weight="3"/>
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
+                        android:layout_weight="1"
                         android:src="@drawable/edit"
                         android:background="?actionBarItemBackground"/>
 
