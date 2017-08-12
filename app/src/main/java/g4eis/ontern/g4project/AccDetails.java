@@ -31,7 +31,7 @@ import java.util.Map;
 
 public class AccDetails extends AppCompatActivity {
 
-    TextView acc_name,accHead,accOdc,accMgr;
+    TextView acc_name,accHead,accOdc,accMgr,accDetail;
 
     SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs";
@@ -45,6 +45,7 @@ public class AccDetails extends AppCompatActivity {
         accHead = (TextView) findViewById(R.id.accHead);
         accOdc = (TextView) findViewById(R.id.accOdc);
         accMgr = (TextView) findViewById(R.id.accMgr);
+        accDetail=(TextView) findViewById(R.id.user_profile_short_bio);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         oauth = sharedpreferences.getString("oauth","null");
@@ -74,6 +75,9 @@ public class AccDetails extends AppCompatActivity {
                                 String accnm=data.getString("name").toString();
                                 acc_name.setGravity(Gravity.CENTER);
                                 acc_name.setText(accnm);
+                                String desc=data.getString("descp").toString();
+                                accDetail.setGravity(Gravity.CENTER);
+                                accDetail.setText(Html.fromHtml("<big>"+desc+"</big>"));
                                 JSONObject jobj1=new JSONObject(jarray.getJSONObject(0).toString());
                                 String role = jobj1.getString("role").toString();
                                 String name=jobj1.getString("name").toString();

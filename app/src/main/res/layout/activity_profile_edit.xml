@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="g4eis.ontern.g4project.Profile_edit">
+    tools:context="g4eis.ontern.g4project.Profile_edit"
+    android:id="@+id/editProfile">
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true"
-
+            android:editable="false"
             android:drawableLeft="@drawable/ic_person_black_24dp"
             android:drawablePadding="16dp"
 
@@ -77,7 +78,7 @@
 
 
     <Button
-        android:id="@+id/btnNewUsr"
+        android:id="@+id/btnUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 

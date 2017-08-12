@@ -45,7 +45,6 @@
                 android:layout_below="@+id/acc_name"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="42dp"
-                android:text="Get all important contacts here"
                 android:textColor="#fff"
                 android:textSize="14sp" />
         </RelativeLayout>
