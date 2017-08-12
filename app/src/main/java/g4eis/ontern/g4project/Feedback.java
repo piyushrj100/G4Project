@@ -1,19 +1,13 @@
 package g4eis.ontern.g4project;
 
-import android.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-/**
- * Created by piyush on 8/8/17.
- */
+public class Feedback extends AppCompatActivity {
 
-public class Feedback extends Fragment {
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.profile_fragment, container, false);
-        return rootView;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_feedback);
     }
 }

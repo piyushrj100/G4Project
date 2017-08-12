@@ -26,10 +26,8 @@ public class Main2Activity extends AppCompatActivity
 
     SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs";
-    public CardView card1;
-    public CardView card2;
-    public CardView card3;
-    public CardView card4;
+
+    public DrawerLayout drawer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +38,7 @@ public class Main2Activity extends AppCompatActivity
 
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -143,14 +141,22 @@ public class Main2Activity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the variation actions
         } else if (id == R.id.nav_Profile) {
+            startActivity(new Intent(Main2Activity.this, profile_fragment.class));
+            drawer.closeDrawers();
 
         } else if (id == R.id.nav_settings) {
 
         } else if (id == R.id.nav_faq) {
+            startActivity(new Intent(Main2Activity.this, faq.class));
+            drawer.closeDrawers();
 
         } else if (id == R.id.nav_Feedback) {
+            startActivity(new Intent(Main2Activity.this, Feedback.class));
+            drawer.closeDrawers();
 
         } else if (id == R.id.nav_about_us) {
+            startActivity(new Intent(Main2Activity.this, About_us.class));
+            drawer.closeDrawers();
 
         }
 
