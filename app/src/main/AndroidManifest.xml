@@ -15,16 +15,14 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".WelcomeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Main2Activity"
             android:label="Home"
-            android:theme="@style/AppTheme.NoActionBar" >
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Splashscreen"
             android:theme="@style/AppTheme.NoActionBar">
@@ -33,25 +31,27 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".Campus"
             android:label="Campus"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ImportantContacts"
+        <activity
+            android:name=".ImportantContacts"
             android:label="Important Contacts"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".Accounts"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Accounts"
             android:label="Accounts"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".AccDetails"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="AccDetails">
-        </activity>
-        <activity android:name=".ViewPagerActivity.TabWithIconActivity"
-            android:label="@string/title_dos_donts"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AccDetails"
+            android:label="AccDetails"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ViewPagerActivity.TabWithIconActivity"
+            android:label="@string/title_dos_donts" />
+        <activity android:name=".Profile_edit" />
     </application>
 
 </manifest>
