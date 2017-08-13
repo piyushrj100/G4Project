@@ -77,7 +77,9 @@ public class Profile_edit extends AppCompatActivity {
                 editor.putString("Name", n);
                 editor.putString("Address", add);
                 editor.putString("Accounts", acc);
-                editor.commit();
+                editor.apply();
+                startActivity(new Intent(Profile_edit.this,profile_fragment.class));
+                finish();
 
             }
         });
