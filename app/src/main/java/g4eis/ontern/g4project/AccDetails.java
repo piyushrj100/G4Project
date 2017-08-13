@@ -31,7 +31,7 @@ import java.util.Map;
 
 public class AccDetails extends AppCompatActivity {
 
-    TextView acc_name,accHead,accOdc,accMgr,accDetail;
+    TextView acc_name,accHead,accOdc,accMgr,accDetail,accInfo;
 
     SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs";
@@ -45,6 +45,7 @@ public class AccDetails extends AppCompatActivity {
         accHead = (TextView) findViewById(R.id.accHead);
         accOdc = (TextView) findViewById(R.id.accOdc);
         accMgr = (TextView) findViewById(R.id.accMgr);
+        accInfo = (TextView) findViewById(R.id.accRecp);
         accDetail=(TextView) findViewById(R.id.user_profile_short_bio);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
@@ -75,9 +76,23 @@ public class AccDetails extends AppCompatActivity {
                                 String accnm=data.getString("name").toString();
                                 acc_name.setGravity(Gravity.CENTER);
                                 acc_name.setText(accnm);
+
                                 String desc=data.getString("descp").toString();
+                                String parts[]=desc.split("!@#");
+                                int len=parts.length;
+                                accInfo.setTextColor(Color.BLACK);
                                 accDetail.setGravity(Gravity.CENTER);
-                                accDetail.setText(Html.fromHtml("<big>"+desc+"</big>"));
+                                accDetail.setText(Html.fromHtml("<big>"+parts[0]+"</big><br>"));
+                                accInfo.setText(Html.fromHtml("<big>"+"Onboaring Instructions"+":</big> <br>"));
+                                int i=1;
+                                while(len>1)
+                                {
+                                    accInfo.append(Html.fromHtml("<big>"+i+")</big> "+parts[i]+"<br>"));
+                                    i++;
+                                    len--;
+                                }
+
+
                                 JSONObject jobj1=new JSONObject(jarray.getJSONObject(0).toString());
                                 String role = jobj1.getString("role").toString();
                                 String name=jobj1.getString("name").toString();
