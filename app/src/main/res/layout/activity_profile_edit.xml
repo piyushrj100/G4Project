@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:editable="false"
-                    android:drawableLeft="@drawable/key"
+                    android:drawableLeft="@drawable/ic_person_black_24dp"
                     android:drawablePadding="16dp"
 
                     android:drawableTint="@color/colorPrimary"

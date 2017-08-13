@@ -38,7 +38,7 @@ public class TabWOIconActivity extends AppCompatActivity {
         viewPager.setOffscreenPageLimit(2);
 
         //Initializing the tablayout
-        tabLayout = (TabLayout) findViewById(R.id.tablayout);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

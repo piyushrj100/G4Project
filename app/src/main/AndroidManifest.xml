@@ -41,7 +41,8 @@
         <activity
             android:name=".Campus"
             android:label="Campus"
-            android:theme="@style/AppTheme.NoActionBar" />
+           android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
         <activity
             android:name=".ImportantContacts"
             android:label="Important Contacts"
@@ -56,7 +57,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ViewPagerActivity.TabWithIconActivity"
-            android:label="@string/title_dos_donts" />
+            android:label="@string/title_dos_donts"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity android:name=".Profile_edit"
             android:label="Edit Password"/>
         <activity
