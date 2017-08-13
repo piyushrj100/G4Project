@@ -1,23 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="g4eis.ontern.g4project.Profile_edit"
     android:id="@+id/editProfile">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            app:cardElevation="4dp"
+            android:layout_margin="20dp"
+            android:paddingBottom="10dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/setName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your Name"
+            android:drawablePadding="16dp"
+            android:elevation="2dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:padding="10dp"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="#ffffffff"
+            android:drawableLeft="@drawable/ic_account_circle_black_24dp"
+            android:drawableTint="@color/colorPrimary"
+            android:singleLine="true"/>
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/setAcc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter your Account"
+                    android:drawablePadding="16dp"
+                    android:elevation="2dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:padding="10dp"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="#ffffffff"
+                    android:drawableLeft="@drawable/accounts"
+                    android:drawableTint="@color/colorPrimary"
+                    android:singleLine="true"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/setAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter your Address"
+                android:drawablePadding="16dp"
+                android:elevation="2dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:padding="10dp"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="#ffffffff"
+                android:drawableLeft="@drawable/location"
+                android:drawableTint="@color/colorPrimary"
+                android:singleLine="true"/>
+
+        </android.support.design.widget.TextInputLayout>
+                <Button
+                    android:id="@+id/btnSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:text="Save Changes"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/round"
+                    android:minHeight="40dp"
+
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="40dp"/>
+
+    </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Change Password"
+                android:gravity="center"
+                app:layout_anchor="@id/cardpass"
+                app:layout_anchorGravity="top|center"
+                android:layout_margin="20dp"
+                android:textSize="20sp"
+
+                android:textColor="@android:color/white"
+                android:background="@color/colorAccent"/>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardpass"
+            android:layout_width="match_parent"
+            app:cardElevation="4dp"
+            android:layout_margin="20dp"
+            android:paddingBottom="10dp"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp">
+
+
+
         <EditText
             android:id="@+id/curpwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:editable="false"
-            android:drawableLeft="@drawable/ic_person_black_24dp"
+            android:drawableLeft="@drawable/key"
             android:drawablePadding="16dp"
 
             android:drawableTint="@color/colorPrimary"
@@ -40,7 +172,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
 
-            android:drawableLeft="@drawable/ic_person_black_24dp"
+            android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
             android:drawablePadding="16dp"
 
             android:drawableTint="@color/colorPrimary"
@@ -63,7 +195,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
 
-            android:drawableLeft="@drawable/ic_person_black_24dp"
+            android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
             android:drawablePadding="16dp"
 
             android:drawableTint="@color/colorPrimary"
@@ -88,10 +220,11 @@
         android:background="@drawable/round"
         android:minHeight="40dp"
         android:layout_marginTop="50dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"/>
-
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
 
 
@@ -102,3 +235,4 @@
 
 
 </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
