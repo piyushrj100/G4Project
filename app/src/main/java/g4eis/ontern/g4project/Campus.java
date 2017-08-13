@@ -83,7 +83,7 @@ public class Campus extends AppCompatActivity {
     }
     @Override
     public void onBackPressed(){
-
+        finish();
     }
 
 }

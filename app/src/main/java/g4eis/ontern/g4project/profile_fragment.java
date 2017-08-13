@@ -45,26 +45,35 @@ public class profile_fragment extends AppCompatActivity {
          return rootView;
      }*/
     ImageView propic;
-    TextView chng;
+    TextView chng,name,email;
     Button btnEdit;
     FloatingActionButton fab;
     //String[] FILE;
     // String ImageDecode;
     CollapsingToolbarLayout collapsing_toolbar;
-    SharedPreferences sp;
+    SharedPreferences sharedpreferences;
+    public static final String MyPREFERENCES = "MyPrefs";
     private final int PICK_IMAGE_REQUEST = 1;
     public final int EDIT_PROFILE=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.profile_fragment);
+
+        name=(TextView) findViewById(R.id.nam);
+        email=(TextView) findViewById(R.id.add);
         propic = (ImageView) findViewById(R.id.propic);
         chng = (TextView) findViewById(R.id.changepass);
         btnEdit = (Button) findViewById(R.id.btnEdit);
         fab=(FloatingActionButton) findViewById(R.id.fab);
         Toolbar toolbar2 = (Toolbar) findViewById(R.id.toolbar);
+
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        String eml=sharedpreferences.getString("uid","User not Logged in");
+        String nm=sharedpreferences.getString("name","User not Logged in");
+        email.setText(eml);
+        name.setText(nm);
 
         collapsing_toolbar=(CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         setSupportActionBar(toolbar2);
@@ -101,10 +110,10 @@ public class profile_fragment extends AppCompatActivity {
             //startActivityForResult(photoPickerIntent, SELECT_PHOTO);
         });
 
-        sp=getSharedPreferences("profilePicture",MODE_PRIVATE);
+        sharedpreferences=getSharedPreferences("profilePicture",MODE_PRIVATE);
 
-        if(!sp.getString("dp","").equals("")){
-            byte[] decodedString = Base64.decode(sp.getString("dp", ""), Base64.DEFAULT);
+        if(!sharedpreferences.getString("dp","").equals("")){
+            byte[] decodedString = Base64.decode(sharedpreferences.getString("dp", ""), Base64.DEFAULT);
             Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
             propic.setImageBitmap(decodedByte);
         }
@@ -131,7 +140,7 @@ public class profile_fragment extends AppCompatActivity {
                         selectedImage.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
                         byte[] b = baos.toByteArray();
                         String encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
-                        sp.edit().putString("dp", encodedImage).commit();
+                        sharedpreferences.edit().putString("dp", encodedImage).commit();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
