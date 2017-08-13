@@ -21,7 +21,8 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".WelcomeActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+       </activity>
         <activity
             android:name=".Main2Activity"
             android:label="Home"
@@ -31,11 +32,12 @@
         <activity
             android:name=".Splashscreen"
             android:theme="@style/AppTheme.NoActionBar" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+       </activity>
         <activity
             android:name=".Campus"
             android:label="Campus"
@@ -55,14 +57,17 @@
         <activity
             android:name=".ViewPagerActivity.TabWithIconActivity"
             android:label="@string/title_dos_donts" />
-        <activity android:name=".Profile_edit" />
+        <activity android:name=".Profile_edit"
+            android:label="Edit Password"/>
         <activity
             android:name=".profile_fragment"
             android:theme="@style/AppTheme.NoActionBar" >
+
        </activity>
         <activity android:name=".Feedback" />
         <activity android:name=".About_us" />
-        <activity android:name=".faq"></activity>
+        <activity android:name=".faq"/>
+
     </application>
 
 </manifest>

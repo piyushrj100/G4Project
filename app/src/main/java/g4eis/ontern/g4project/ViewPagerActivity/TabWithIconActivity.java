@@ -1,10 +1,12 @@
 package g4eis.ontern.g4project.ViewPagerActivity;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
 
 import g4eis.ontern.g4project.Fragment.DontsFragment;
@@ -34,10 +36,13 @@ public class TabWithIconActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab_without_icon);
+
         //Initializing viewPager
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setOffscreenPageLimit(2);
         setupViewPager(viewPager);
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         //Initializing the tablayout
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
@@ -94,6 +99,16 @@ public class TabWithIconActivity extends AppCompatActivity {
         adapter.addFragment(dosFragment,"DO'S");
         adapter.addFragment(dontsFragment,"DONT'S");
         viewPager.setAdapter(adapter);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+
     }
 
 }

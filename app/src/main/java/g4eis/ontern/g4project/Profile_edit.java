@@ -25,12 +25,9 @@ import java.util.Map;
 public class Profile_edit extends AppCompatActivity {
 
     SharedPreferences sharedpreferences;
-    String n="";
-    String add="";
-    String acc="";
     private static final String MyPREFERENCES = "MyPrefs";
-    EditText curpwd,nwpwd,newpass,setAddress,setName,setAcc;
-    Button update,btnSave;
+    EditText curpwd,nwpwd,newpass;
+    Button update;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,9 +36,6 @@ public class Profile_edit extends AppCompatActivity {
         curpwd=(EditText) findViewById(R.id.curpwd);
         nwpwd=(EditText) findViewById(R.id.newpwd);
         newpass=(EditText) findViewById(R.id.newpass);
-        setName=(EditText) findViewById(R.id.setName);
-        setAcc=(EditText) findViewById(R.id.setAcc);
-        setAddress=(EditText) findViewById(R.id.setAddress);
         update=(Button) findViewById(R.id.btnUpdate);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
@@ -63,28 +57,7 @@ public class Profile_edit extends AppCompatActivity {
                     Snackbar.make(findViewById(R.id.editProfile), "Please enter same password in both places!!", Snackbar.LENGTH_LONG).show();
                 }
             }
-        });
-        //For storing the value of names,address and account of the user.
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                 n=setName.getText().toString();
-                add=setAddress.getText().toString();
-                 acc=setAcc.getText().toString();
-
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-
-                editor.putString("Name", n);
-                editor.putString("Address", add);
-                editor.putString("Accounts", acc);
-                editor.apply();
-                startActivity(new Intent(Profile_edit.this,profile_fragment.class));
-                finish();
-
-            }
-        });
-
-
+        });//For storing the value of names,address and account of the user.
 
     }
     private void changeData(final String token, final String pwd){

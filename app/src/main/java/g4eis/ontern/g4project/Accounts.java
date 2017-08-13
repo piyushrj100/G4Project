@@ -10,6 +10,7 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -42,6 +43,9 @@ public class Accounts extends AppCompatActivity implements SearchView.OnQueryTex
         setContentView(R.layout.activity_accounts);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         editSearch = (SearchView) findViewById(R.id.search);
         editSearch.setOnQueryTextListener(this);
@@ -160,6 +164,17 @@ public class Accounts extends AppCompatActivity implements SearchView.OnQueryTex
         //adapter.filter(text);
         //Toast.makeText(Accounts.this,"Change "+newText,Toast.LENGTH_LONG).show();
         return false;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+
     }
 }
 

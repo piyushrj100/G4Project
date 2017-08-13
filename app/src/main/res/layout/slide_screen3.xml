@@ -20,9 +20,10 @@
             android:textStyle="bold" />
         <ImageView
             android:layout_width="300dp"
-            android:scaleType="fitXY"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
             android:layout_height="250dp"
-            android:src="@drawable/ovrwrite3"/>
+            android:src="@drawable/reach_slide"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
