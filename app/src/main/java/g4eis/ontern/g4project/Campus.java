@@ -32,8 +32,8 @@ public class Campus extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_campus);
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        //ActionBar actionBar = getActionBar();
+        //actionBar.setDisplayHomeAsUpEnabled(true);
 
         webView  = (WebView) findViewById(R.id.webView);
         expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);

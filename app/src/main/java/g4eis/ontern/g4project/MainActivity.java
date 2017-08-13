@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnNewUsr, btnLogin, btnForgot;
     SharedPreferences sharedpreferences;
     private static final String MyPREFERENCES = "MyPrefs";
-    private String oauth1;
+    private String oauth1,oauth2;
     private ProgressDialog mProgress,m2;
 
     @Override
@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
         btnNewUsr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+
+                getOauth2();
                 //Dialog Box for registration
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this,R.style.InvitationDialog);
                 final EditText input = new EditText(MainActivity.this);      //Text Box for email input
@@ -173,10 +175,10 @@ public class MainActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor = sharedpreferences.edit();
                             if(!rslt.equals(null)&&token.equals("Bearer"))
                             {
-                                editor.putString("oauth",oauth1);
+                                editor.putString("oauth",rslt);
                                 editor.putString("uid",email);
                                 editor.putString("pwd",password);
-                                editor.putString("token",rslt);
+                                //editor.putString("token",rslt);
                                 editor.putBoolean("login",true);
                                 editor.commit();
                                 Toast.makeText(MainActivity.this, "Login Successful...", Toast.LENGTH_SHORT).show();
@@ -259,6 +261,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         m2.dismiss();
+                        //Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+
 
                     }
                 }
@@ -270,6 +274,61 @@ public class MainActivity extends AppCompatActivity {
                 Map<String, String>  params = new HashMap<String, String>();
                 params.put("email",email);
                 params.put("access_token",oauth1);
+                return params;
+            }
+        };
+        queue.add(postRequest);
+    }
+
+    private void getOauth2(){
+
+        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);  // this = context
+        String url = "http://tcsapp.quicfind.com/oauth/access_token";
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jobj = new JSONObject(response);
+                            oauth2=jobj.getString("access_token");
+                            if(!oauth2.equals(""))
+                            {
+                                //Do Nothing..... Signifies recieved Oauth correctly
+                                SharedPreferences.Editor editor = sharedpreferences.edit();
+                                editor.putString("oauth_login",oauth2);
+                                editor.commit();
+                                //Toast.makeText(Splashscreen.this, "print"+oauth2, Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                Intent chatIntent=new Intent(getApplicationContext(),Splashscreen.class);
+                                startActivity(chatIntent);
+                                finish();
+                            }
+                        }catch (Exception e){
+                            System.out.println(e.getMessage().toString());
+                        }
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        //Toast.makeText(MainActivity.this, "oauth1 "+error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                //params to login url
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("password","password" );
+                params.put("grant_type","password");
+                params.put("client_id","0");
+                params.put("client_secret","public_secret");
+                params.put("username","public@tcs.com");
                 return params;
             }
         };

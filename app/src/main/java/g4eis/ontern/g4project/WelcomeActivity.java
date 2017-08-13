@@ -20,6 +20,18 @@ import android.graphics.Color;
         import android.widget.Button;
         import android.widget.LinearLayout;
         import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.famoussoft.libs.JSON.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -29,12 +41,13 @@ public class WelcomeActivity extends AppCompatActivity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
-    SharedPreferences sharedpreferences;
-    public static final String MyPREFERENCES = "MyPrefs";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //getOauth2();
 
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {

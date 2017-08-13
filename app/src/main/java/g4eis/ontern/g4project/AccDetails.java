@@ -111,7 +111,7 @@ public class AccDetails extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        Toast.makeText(AccDetails.this, "volley error: "+error.getMessage(), Toast.LENGTH_LONG).show();
+                        //Toast.makeText(AccDetails.this, "volley error: "+error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
         ) {

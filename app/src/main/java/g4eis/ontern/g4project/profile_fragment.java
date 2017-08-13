@@ -70,7 +70,7 @@ public class profile_fragment extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         String eml=sharedpreferences.getString("uid","User not Logged in");
-        String nm=sharedpreferences.getString("name","User not Logged in");
+        String nm=sharedpreferences.getString("usrName","User not Logged in");
         email.setText(eml);
         name.setText(nm);
 

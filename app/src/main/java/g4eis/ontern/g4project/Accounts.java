@@ -78,7 +78,7 @@ public class Accounts extends AppCompatActivity implements SearchView.OnQueryTex
                 {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Accounts.this, "volley error"+error.getMessage(), Toast.LENGTH_LONG).show();
+                        //Toast.makeText(Accounts.this, "volley error"+error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
         ) {
