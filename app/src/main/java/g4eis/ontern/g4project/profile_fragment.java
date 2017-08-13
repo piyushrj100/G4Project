@@ -4,94 +4,140 @@ package g4eis.ontern.g4project;
  * Created by piyush on 8/8/17.
  */
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+
+
+
 
 public class profile_fragment extends AppCompatActivity {
-   /* @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.profile_fragment, container, false);
-        return rootView;
-    }*/
-   ImageView propic;
-   TextView chng;
-    ImageButton pro;
+    /* @Override
+     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+         View rootView = inflater.inflate(R.layout.profile_fragment, container, false);
+         return rootView;
+     }*/
+    ImageView propic;
+    TextView chng;
+    Button btnEdit;
+    FloatingActionButton fab;
     //String[] FILE;
-    String ImageDecode;
-    private static final int LOAD_IMAGE=1;
-   @Override
-   protected void onCreate(Bundle savedInstanceState) {
-       super.onCreate(savedInstanceState);
-       propic=(ImageView) findViewById(R.id.propic) ;
-       chng=(TextView) findViewById(R.id.changepass);
-       pro=(ImageButton) findViewById(R.id.pro);
-       setContentView(R.layout.profile_fragment);
-      Toolbar toolbar2=(Toolbar) findViewById(R.id.toolbar);
-      setSupportActionBar(toolbar2);
-       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      /*chng.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               Intent intent = new Intent(profile_fragment.this, Profile_edit.class);
-               startActivity(intent);
-               //finish();
-           }
-       });*/
-     /*pro.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               Intent galleryIntent=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-               startActivityForResult(galleryIntent,LOAD_IMAGE);
+    // String ImageDecode;
+    CollapsingToolbarLayout collapsing_toolbar;
+    SharedPreferences sp;
+    private final int PICK_IMAGE_REQUEST = 1;
+    public final int EDIT_PROFILE=1;
 
-           }
-       });
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-   }
+        setContentView(R.layout.profile_fragment);
+        propic = (ImageView) findViewById(R.id.propic);
+        chng = (TextView) findViewById(R.id.changepass);
+        btnEdit = (Button) findViewById(R.id.btnEdit);
+        fab=(FloatingActionButton) findViewById(R.id.fab);
+        Toolbar toolbar2 = (Toolbar) findViewById(R.id.toolbar);
 
-   @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        try {
-
-            if (requestCode ==LOAD_IMAGE && resultCode == RESULT_OK
-                    && null != data) {
+        collapsing_toolbar=(CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        setSupportActionBar(toolbar2);
 
 
-                Uri URI = data.getData();
-                String[] FILE = { MediaStore.Images.Media.DATA };
+        collapsing_toolbar.setTitle("Profile");
 
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivityForResult(new Intent(profile_fragment.this,Profile_edit.class),EDIT_PROFILE);
+            }
+        });
+         //makes the title bar transparent.
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window w = getWindow(); // in Activity's onCreate() for instance
+            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }*/
+        //for floating action bur
+       fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+// Show only images, no videos or anything else
+              intent.setType("image/*");
 
-                Cursor cursor = getContentResolver().query(URI,
-                        FILE, null, null, null);
-
-                cursor.moveToFirst();
-
-                int columnIndex = cursor.getColumnIndex(FILE[0]);
-                ImageDecode = cursor.getString(columnIndex);
-
-
-                propic.setImageBitmap(BitmapFactory
-                        .decodeFile(ImageDecode));
-                cursor.close();
+                //intent.setAction(Intent.ACTION_GET_CONTENT);
+// Always show the chooser (if there are multiple options available)
+               startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
 
             }
-        } catch (Exception e) {
-            Toast.makeText(this, "Please try again", Toast.LENGTH_LONG)
-                    .show();
-        }*/
+            /// Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+            // photoPickerIntent.setType("image/*");
+            //startActivityForResult(photoPickerIntent, SELECT_PHOTO);
+        });
+
+        sp=getSharedPreferences("profilePicture",MODE_PRIVATE);
+
+        if(!sp.getString("dp","").equals("")){
+            byte[] decodedString = Base64.decode(sp.getString("dp", ""), Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            propic.setImageBitmap(decodedByte);
+        }
+
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
+        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+        switch (requestCode) {
+            case PICK_IMAGE_REQUEST:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        final Uri imageUri = imageReturnedIntent.getData();
+                        final InputStream imageStream = getContentResolver().openInputStream(imageUri);
+
+                        final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                         propic.setImageBitmap(selectedImage);
+
+
+
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        selectedImage.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
+                        byte[] b = baos.toByteArray();
+                        String encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
+                        sp.edit().putString("dp", encodedImage).commit();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+        }
+
     }
 }

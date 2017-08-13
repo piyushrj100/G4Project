@@ -8,10 +8,10 @@
     android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
+        android:id="@+id/app_bar"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay"
-        android:layout_height="250dp"
+        android:layout_height="400dp"
         android:layout_width="match_parent">
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -19,9 +19,19 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             android:id="@+id/collapsing_toolbar"
-            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
             app:contentScrim="?attr/colorPrimary">
+
+            <ImageView
+                android:id="@+id/propic"
+                android:clickable="true"
+                android:focusable="true"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -29,28 +39,35 @@
                 app:popupTheme="@style/AppTheme.PopupOverlay"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_width="match_parent">
-                <ImageButton
-                    android:id="@+id/pro"
+
+                <Button
+                    android:id="@+id/btnEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/camera"
+                    android:src="@drawable/edit"
+                    android:text="Edit Profile"
+                    android:layout_marginRight="4dp"
+                    android:drawableLeft="@drawable/edit"
+                    android:textAllCaps="false"
                     android:layout_gravity="right"
+                    android:background="?actionBarItemBackground"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="2dp"
-
-
-                    android:background="?actionBarItemBackground"/>
-
+                    android:layout_alignParentRight="true"/>
             </android.support.v7.widget.Toolbar>
 
-            <ImageView
-                android:id="@+id/propic"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop" />
+
+
+
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        app:layout_anchor="@id/app_bar"
+        app:layout_anchorGravity="bottom|end"
+        android:src="@drawable/ic_menu_gallery" />
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -81,6 +98,7 @@
                 android:textSize="25dp"
                 android:layout_weight="3"/>
                 <ImageButton
+                    android:id="@+id/imgbtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

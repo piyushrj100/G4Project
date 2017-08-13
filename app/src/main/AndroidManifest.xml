@@ -5,6 +5,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL"/>
 
     <application
         android:allowBackup="true"
@@ -24,16 +26,11 @@
             android:name=".Main2Activity"
             android:label="Home"
             android:theme="@style/AppTheme.NoActionBar">
+
         </activity>
         <activity
             android:name=".Splashscreen"
-            android:theme="@style/AppTheme.NoActionBar">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Campus"
             android:label="Campus"
@@ -56,7 +53,12 @@
         <activity android:name=".Profile_edit" />
         <activity
             android:name=".profile_fragment"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
         <activity android:name=".Feedback" />
         <activity android:name=".About_us" />
         <activity android:name=".faq"></activity>
