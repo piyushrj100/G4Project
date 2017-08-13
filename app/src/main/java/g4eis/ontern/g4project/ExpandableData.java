@@ -47,12 +47,12 @@ public class ExpandableData {
         Hyderabad.add("Kohinoor Park");
         Hyderabad.add("Search all campuses!");
 
-        List<String> Bengaluru = new ArrayList<String>();
-        Bengaluru.add("Gandhi Nagar");
-        Bengaluru.add("Abhilash Building");
-        Bengaluru.add("International Tech Park");
-        Bengaluru.add("SJM Towers");
-        Bengaluru.add("Search all campuses!");
+        List<String> Bangalore = new ArrayList<String>();
+        Bangalore.add("Gandhi Nagar");
+        Bangalore.add("Abhilash Building");
+        Bangalore.add("International Tech Park");
+        Bangalore.add("SJM Towers");
+        Bangalore.add("Search all campuses!");
 
         List<String> Pune = new ArrayList<String>();
        Pune.add("Hadapsar Industrial Estate");
@@ -69,7 +69,7 @@ public class ExpandableData {
         expandableListDetail.put("Kolkata", Kolkata);
         expandableListDetail.put("Chennai", Chennai);
         expandableListDetail.put("Delhi",Delhi);
-        expandableListDetail.put("Bengaluru", Bengaluru);
+        expandableListDetail.put("Bangalore", Bangalore);
         expandableListDetail.put("Hyderabad", Hyderabad);
         expandableListDetail.put("Pune", Pune);
 

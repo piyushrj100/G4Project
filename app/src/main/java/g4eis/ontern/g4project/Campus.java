@@ -38,6 +38,10 @@ public class Campus extends AppCompatActivity {
         expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);
 
+        webView = (WebView) findViewById(R.id.webView);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.canGoBack();
+
         expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
             @Override
@@ -63,9 +67,7 @@ public class Campus extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                webView = (WebView) findViewById(R.id.webView);
-                webView.getSettings().setJavaScriptEnabled(true);
-                webView.canGoBack();
+
                 if( expandableListDetail.get(expandableListTitle.get(groupPosition)).get(childPosition).equals("Search all campuses!"))
                 {
                     webView.loadUrl("http://www.google.com/search?q=TCS "+expandableListTitle.get(groupPosition)+" all campuses details");
@@ -79,13 +81,9 @@ public class Campus extends AppCompatActivity {
         });
 
     }
-    /*@Override
+    @Override
     public void onBackPressed(){
-        Intent chatIntent=new Intent(getApplicationContext(),Campus.class);
-        //chatIntent.putExtra("userid",email);
-        startActivity(chatIntent);
-        finish();
 
-    }*/
+    }
 
 }
