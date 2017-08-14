@@ -166,6 +166,7 @@ public class Main2Activity extends AppCompatActivity
             drawer.closeDrawers();
 
         } else if (id == R.id.nav_settings) {
+            Toast.makeText(this, "You Pressed settings!!", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_faq) {
             startActivity(new Intent(Main2Activity.this, faq.class));

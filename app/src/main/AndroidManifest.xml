@@ -68,7 +68,8 @@
 
        </activity>
         <activity android:name=".Feedback" />
-        <activity android:name=".About_us" />
+        <activity android:name=".About_us"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".faq"/>
 
     </application>
