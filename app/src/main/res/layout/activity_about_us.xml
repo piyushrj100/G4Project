@@ -52,6 +52,78 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                app:cardElevation="4dp"
+                app:cardMaxElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_image0"
+                        android:layout_width="96dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_person_black_24dp"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="#FF000000"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="Binoy Pramanik\n\nProject Mentor,\nTCS Kolkata"
+                        android:textSize="25dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_gravity="top" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@android:color/darker_gray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/fb"
+                        android:layout_margin="10dp"
+                        android:background="?actionBarItemBackground"/>
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/github"
+                        android:layout_margin="10dp"
+                        android:background="?actionBarItemBackground"/>
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/goggle"
+                        android:layout_margin="10dp"
+                        android:background="?actionBarItemBackground"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+            </android.support.v7.widget.CardView>
+
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -83,9 +155,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
-                    android:text="Lorem Ipsum Dolor\n\n4th year,Xyz Branch Makaut"
+                    android:text="Prince Kumar\n\n4th year, CSE\nTechno India Saltlake"
                     android:textSize="25dp"
-                    android:textColor="@android:color/holo_red_dark"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="2dp"
                     android:layout_gravity="top" />
@@ -158,9 +229,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif"
-                            android:text="Lorem Ipsum Dolor\n\n4th year,Xyz Branch Makaut"
+                            android:text="Piyush Raja\n\n4th year, CSE\nTechno India Saltlake"
                             android:textSize="25dp"
-                            android:textColor="@android:color/holo_red_dark"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="2dp"
                             android:layout_gravity="top" />
@@ -232,8 +302,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif"
-                            android:textColor="@android:color/holo_red_dark"
-                            android:text="Lorem Ipsum Dolor\n\n4th year,Xyz Branch Makaut"
+                            android:text="Debayan\n\n4th year, CSE\nTechno India, Saltlake"
                             android:textSize="25dp"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="2dp"
@@ -305,9 +374,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@android:color/holo_red_dark"
                             android:fontFamily="sans-serif"
-                            android:text="Lorem Ipsum Dolor\n\n4th year,Xyz Branch Makaut"
+                            android:text="Shubhanil Bag\n\n4th year, CSE\nNSEC"
                             android:textSize="25dp"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="2dp"
@@ -380,9 +448,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif"
-                            android:text="Lorem Ipsum Dolor\n\n4th year,Xyz Branch Makaut"
+                            android:text="Jayanta Chowdhury\n\n4th year, ECE\nNSEC"
                             android:textSize="25dp"
-                            android:textColor="@android:color/holo_red_dark"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="2dp"
                             android:layout_gravity="top" />

@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnNewUsr, btnLogin, btnForgot;
     SharedPreferences sharedpreferences;
     private static final String MyPREFERENCES = "MyPrefs";
-    private String oauth1,oauth2;
+    private String oauth1;
     private ProgressDialog mProgress,m2;
 
     @Override
@@ -60,14 +60,13 @@ public class MainActivity extends AppCompatActivity {
         m2.setIndeterminate(true);
 
 
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        oauth1=sharedpreferences.getString("oauth_login","null");
+        //sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        //oauth1=sharedpreferences.getString("oauth_login","null");
         //For New User Registration
         btnNewUsr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
 
-                getOauth2();
                 //Dialog Box for registration
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this,R.style.InvitationDialog);
                 final EditText input = new EditText(MainActivity.this);      //Text Box for email input
@@ -78,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 builder.setView(input);
                 builder.setTitle("New User Registration");
                 builder.setCancelable(false);
+                getOauth2();
                 builder.setMessage("Enter Your e-mail to recieve password");
                 builder.setPositiveButton("Send Password", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -291,12 +291,12 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jobj = new JSONObject(response);
-                            oauth2=jobj.getString("access_token");
-                            if(!oauth2.equals(""))
+                            oauth1=jobj.getString("access_token");
+                            if(!oauth1.equals(""))
                             {
                                 //Do Nothing..... Signifies recieved Oauth correctly
                                 SharedPreferences.Editor editor = sharedpreferences.edit();
-                                editor.putString("oauth_login",oauth2);
+                                editor.putString("oauth_login",oauth1);
                                 editor.commit();
                                 //Toast.makeText(Splashscreen.this, "print"+oauth2, Toast.LENGTH_LONG).show();
                             }
@@ -315,7 +315,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        //Toast.makeText(MainActivity.this, "oauth1 "+error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "oauth1 "+error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
         ) {
