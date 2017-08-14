@@ -33,12 +33,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.famoussoft.libs.JSON.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-
-
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class profile_fragment extends AppCompatActivity {
@@ -69,6 +77,8 @@ public class profile_fragment extends AppCompatActivity {
         Toolbar toolbar2 = (Toolbar) findViewById(R.id.toolbar);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        String tkn=sharedpreferences.getString("oauth","null");
+        getDetails(tkn);
         String eml=sharedpreferences.getString("uid","User not Logged in");
         String nm=sharedpreferences.getString("usrName","Enter your Name");
         email.setText(eml);
@@ -85,6 +95,7 @@ public class profile_fragment extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivityForResult(new Intent(profile_fragment.this,Profile_edit.class),EDIT_PROFILE);
+                finish();
             }
         });
          //makes the title bar transparent.
@@ -159,6 +170,59 @@ public class profile_fragment extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
 
+    }
+
+    private void getDetails(final String token){
+
+        RequestQueue queue = Volley.newRequestQueue(profile_fragment.this);  // this = context
+        String url = "http://tcsapp.quicfind.com/users";
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jobj = new JSONObject(response);
+                            String nm=jobj.getString("name");
+                            String email=jobj.getString("email");
+                            if(!email.equals(""))
+                            {
+                                //Do Nothing..... Signifies recieved Oauth correctly
+                                SharedPreferences.Editor editor = sharedpreferences.edit();
+                                editor.putString("usrName",nm);
+                                editor.commit();
+                                name.setText(nm);
+                                //Toast.makeText(profile_fragment.this, "print "+name, Toast.LENGTH_LONG).show();
+                            }
+                            else{
+                                Intent chatIntent=new Intent(getApplicationContext(),Splashscreen.class);
+                                startActivity(chatIntent);
+                                finish();
+                            }
+                        }catch (Exception e){
+                            System.out.println(e.getMessage().toString());
+                        }
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        //Toast.makeText(Splashscreen.this, "oauth1 splash "+error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                //params to login url
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("access_token",token );
+                return params;
+            }
+        };
+        queue.add(postRequest);
     }
 
 }
