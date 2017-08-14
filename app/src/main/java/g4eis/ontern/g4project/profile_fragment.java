@@ -99,11 +99,11 @@ public class profile_fragment extends AppCompatActivity {
             }
         });
          //makes the title bar transparent.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+       if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
             Window w = getWindow(); // in Activity's onCreate() for instance
             w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         }
-        //for floating action bur
+        //for floating action button
        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

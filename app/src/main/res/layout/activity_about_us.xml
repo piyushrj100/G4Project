@@ -85,6 +85,7 @@
                     android:fontFamily="sans-serif"
                     android:text="Lorem Ipsum Dolor\n\n4th year,Xyz Branch Makaut"
                     android:textSize="25dp"
+                    android:textColor="@android:color/holo_red_dark"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="2dp"
                     android:layout_gravity="top" />
@@ -159,6 +160,7 @@
                             android:fontFamily="sans-serif"
                             android:text="Lorem Ipsum Dolor\n\n4th year,Xyz Branch Makaut"
                             android:textSize="25dp"
+                            android:textColor="@android:color/holo_red_dark"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="2dp"
                             android:layout_gravity="top" />
@@ -230,6 +232,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif"
+                            android:textColor="@android:color/holo_red_dark"
                             android:text="Lorem Ipsum Dolor\n\n4th year,Xyz Branch Makaut"
                             android:textSize="25dp"
                             android:layout_marginLeft="20dp"
@@ -302,6 +305,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@android:color/holo_red_dark"
                             android:fontFamily="sans-serif"
                             android:text="Lorem Ipsum Dolor\n\n4th year,Xyz Branch Makaut"
                             android:textSize="25dp"
@@ -378,6 +382,7 @@
                             android:fontFamily="sans-serif"
                             android:text="Lorem Ipsum Dolor\n\n4th year,Xyz Branch Makaut"
                             android:textSize="25dp"
+                            android:textColor="@android:color/holo_red_dark"
                             android:layout_marginLeft="20dp"
                             android:layout_marginTop="2dp"
                             android:layout_gravity="top" />

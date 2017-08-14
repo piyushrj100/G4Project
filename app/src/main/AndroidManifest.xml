@@ -27,16 +27,16 @@
             android:name=".Main2Activity"
             android:label="Home"
             android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity
-            android:name=".Splashscreen"
-            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Splashscreen"
+            android:theme="@style/AppTheme.NoActionBar" >
+
        </activity>
         <activity
             android:name=".Campus"
@@ -69,7 +69,8 @@
        </activity>
         <activity android:name=".Feedback" />
         <activity android:name=".About_us"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar">
+       </activity>
         <activity android:name=".faq"/>
 
     </application>
