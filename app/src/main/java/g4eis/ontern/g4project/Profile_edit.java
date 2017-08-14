@@ -41,7 +41,7 @@ public class Profile_edit extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         String pass=sharedpreferences.getString("pwd","User not Logged in !!!!");
-        String name=sharedpreferences.getString("usrName","User not Logged in");
+        String name=sharedpreferences.getString("usrName","Enter your name here");
         final String token=sharedpreferences.getString("oauth","null");
         nwpwd.setText(pass);
         newpass.setText(pass);

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">G4Project</string>
+    <string name="app_name">TCS Embrace</string>
     <!--BY Piyush Raja-->
     <string name="title_activity_welcome">Home Screen</string>
     <string name="next">NEXT</string>
@@ -32,9 +32,8 @@
     <!-- Navigation Drawer menu labels -->
     <string name="nav_home">Home</string>
     <string name="nav_profile">Profile</string>
-    <string name="nav_faqs">FAQs</string>
     <string name="nav_Feedback">Feedback</string>
-    <string name="nav_settings">Settings</string>
+    <string name="nav_settings">Logout</string>
     <string name="nav_about_us">About Us</string>
     <string name="nav_logout">Log Out</string>
     <string-array name="nav_item_activity_titles">

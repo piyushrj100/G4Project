@@ -105,14 +105,14 @@ public class Main2Activity extends AppCompatActivity
         }
     }*/
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main2, menu);
-        return true;
+        //getMenuInflater().inflate(R.menu.main2, menu);
+        //return true;
     }
 
-    @Override
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -124,17 +124,11 @@ public class Main2Activity extends AppCompatActivity
             return true;
         }
         if(id==R.id.action_logout){
-            sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedpreferences.edit();
-            editor.clear();
-            editor.commit();
-            Intent signInIntent = new Intent(getApplicationContext(),MainActivity.class);
-            startActivity(signInIntent);
-            finish();
+
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -165,14 +159,28 @@ public class Main2Activity extends AppCompatActivity
             startActivity(new Intent(Main2Activity.this, profile_fragment.class));
             drawer.closeDrawers();
 
-        } else if (id == R.id.nav_settings) {
-            Toast.makeText(this, "You Pressed settings!!", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.nav_logout) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Logout Confirmation");
+            builder.setCancelable(false);
+            builder.setMessage("Do you really want to Logout");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedpreferences.edit();
+                            editor.clear();
+                            editor.commit();
+                            Intent signInIntent = new Intent(getApplicationContext(),MainActivity.class);
+                            startActivity(signInIntent);
+                            finish();
+                        }
+                    }
+            );
+            builder.setNegativeButton("No", null);
+            builder.show();
 
-        } else if (id == R.id.nav_faq) {
-            startActivity(new Intent(Main2Activity.this, faq.class));
-            drawer.closeDrawers();
 
-        } else if (id == R.id.nav_Feedback) {
+        }  else if (id == R.id.nav_Feedback) {
             startActivity(new Intent(Main2Activity.this, Feedback.class));
             drawer.closeDrawers();
 
