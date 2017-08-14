@@ -95,7 +95,7 @@ public class profile_fragment extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivityForResult(new Intent(profile_fragment.this,Profile_edit.class),EDIT_PROFILE);
-                finish();
+                Toast.makeText(profile_fragment.this,"Password should be at least 6 characters long",Toast.LENGTH_LONG).show();
             }
         });
          //makes the title bar transparent.
