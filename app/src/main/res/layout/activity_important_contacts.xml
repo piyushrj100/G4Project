@@ -80,7 +80,7 @@
                     android:textSize="25dp"
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="15dp"
-                    android:textColor="#009688"
+                    android:textColor="#e91e63"
                     />
                 <View
                     android:layout_width="match_parent"
@@ -106,7 +106,7 @@
                     android:textSize="25dp"
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="15dp"
-                    android:textColor="#009688"
+                    android:textColor="#e91e63"
                     android:layout_marginBottom="2dp"
                     />
 
@@ -129,6 +129,7 @@
                         android:layout_height="match_parent"
                         android:text="@string/women_helpline"
                         android:textSize="15dp"
+                        android:layout_marginTop="15dp"
                         android:drawableLeft="@drawable/women"
                         android:drawablePadding="5dp"
                         android:drawableTint="#009688"
@@ -142,7 +143,7 @@
                         android:textSize="25dp"
                         android:layout_marginLeft="50dp"
                         android:layout_marginTop="15dp"
-                        android:textColor="#009688"
+                        android:textColor="#e91e63"
                         />
                     <View
                         android:layout_width="match_parent"
@@ -154,7 +155,8 @@
                         android:layout_height="match_parent"
                         android:text="@string/police_helpline"
                         android:textSize="15dp"
-                        android:drawableLeft="@drawable/listen"
+
+                        android:drawableLeft="@drawable/police"
                         android:drawablePadding="5dp"
                         android:drawableTint="#009688"
                         android:layout_marginLeft="20dp"
@@ -168,7 +170,7 @@
                         android:textSize="25dp"
                         android:layout_marginLeft="50dp"
                         android:layout_marginTop="15dp"
-                        android:textColor="#009688"
+                        android:textColor="#e91e63"
                         />
 
 
@@ -190,7 +192,8 @@
                         android:layout_height="match_parent"
                         android:text="@string/Employee_Assistant_program"
                         android:textSize="15dp"
-                        android:drawableLeft="@drawable/women"
+                        android:layout_marginTop="15dp"
+                        android:drawableLeft="@drawable/support"
                         android:drawablePadding="5dp"
                         android:drawableTint="#009688"
                         android:layout_marginLeft="20dp"
@@ -203,7 +206,7 @@
                         android:textSize="25dp"
                         android:layout_marginLeft="50dp"
                         android:layout_marginTop="15dp"
-                        android:textColor="#009688"
+                        android:textColor="#e91e63"
                         />
                     <View
                         android:layout_width="match_parent"
@@ -215,7 +218,7 @@
                         android:layout_height="match_parent"
                         android:text="@string/night_car"
                         android:textSize="15dp"
-                        android:drawableLeft="@drawable/listen"
+                        android:drawableLeft="@drawable/car"
                         android:drawablePadding="5dp"
                         android:drawableTint="#009688"
                         android:layout_marginLeft="20dp"
@@ -229,7 +232,7 @@
                         android:textSize="25dp"
                         android:layout_marginLeft="50dp"
                         android:layout_marginTop="15dp"
-                        android:textColor="#009688"
+                        android:textColor="#e91e63"
                         />
 
 
