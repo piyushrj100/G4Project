@@ -26,7 +26,7 @@
         <activity
             android:name=".Main2Activity"
             android:label="Home"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/UserTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -47,7 +47,7 @@
         <activity
             android:name=".ImportantContacts"
             android:label="Important Contacts"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/UserTheme" />
         <activity
             android:name=".Accounts"
             android:label="Accounts"

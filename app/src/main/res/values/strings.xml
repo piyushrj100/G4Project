@@ -53,6 +53,20 @@
     <string name="tab2">DONT_S</string>
     <string name="title_dos_donts">Dos And Donts</string>
 
+    <!--String for important contacts-->
+    <string name="tcs_helpline"> TCS Helpline No.</string>
+    <string name="helpline_number">1800 419 3010</string>
+    <string name="Employee_Assistant_program">Employee Assistant Program</string>
+    <string name="Eap_number">1800 425 9595</string>
+    <string name="police_helpline">Police Helpline</string>
+    <string name="helpline_police">100</string>
+    <string name="women_helpline">Women Helpline</string>
+    <string name="women_helpline_number">1091</string>
+    <string name="night_car">Night Car Control Room</string>
+    <string name="number_night_car">033 6688 1234</string>
+    <string name="Listening_post">Listening Post No.</string>
+    <string name="post_number">1800 266 3377</string>
+
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

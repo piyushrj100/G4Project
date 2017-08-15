@@ -18,6 +18,8 @@
     <color name="dot_active_screen1">#90caf9</color>
     <color name="dot_active_screen2">#a5d6a7</color>
     <color name="dot_active_screen3">#ef9a9a</color>
+    <color name="primary_material_light">#e91e63</color>
+    <color name="primary_dark_material_light">#c2185b</color>
     <array name="array_dot_active">
         <item>@color/dot_active_screen1</item>
         <item>@color/dot_active_screen2</item>
