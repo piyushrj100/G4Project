@@ -9,6 +9,9 @@
         android:layout_height="wrap_content"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         android:paddingTop="10dp"
+
+        android:textColor="#009688"
+        android:textSize="18dp"
         android:background="?actionBarItemBackground"
         android:paddingBottom="10dp" />
 

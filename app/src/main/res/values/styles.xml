@@ -34,5 +34,9 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="UserTheme" parent="Theme.AppCompat.Light.NoActionBar" /><!--Added later for collapsable toolbar-->
+    <style name="UserTheme" parent="Theme.AppCompat.Light.NoActionBar" />
+
+    <style name="Theme.UserTheme.DayNight" parent="Theme.AppCompat.DayNight" />
+
+    <style name="dark1" parent="Theme.AppCompat.NoActionBar" /><!--Added later for collapsable toolbar-->
 </resources>

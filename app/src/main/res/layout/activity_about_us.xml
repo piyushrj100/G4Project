@@ -29,7 +29,7 @@
                 android:layout_height="match_parent"
                 app:layout_collapseMode="parallax"
                 android:fitsSystemWindows="true"
-                android:src="@drawable/developer"
+                android:src="@drawable/mat1"
                 android:scaleType="centerCrop" />
 
             <android.support.v7.widget.Toolbar
